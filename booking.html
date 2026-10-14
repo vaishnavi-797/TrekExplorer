@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Trek | TrekExplorer</title>
+
+
+    <style>
+
+        /* =========================================
+           GLOBAL RESET
+           ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7f5;
+            color: #333;
+        }
+
+
+        /* =========================================
+           NAVBAR
+           ========================================= */
+
+        nav {
+
+            height: 75px;
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 60px;
+
+            background: white;
+
+            box-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.08);
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        .logo {
+
+            font-size: 25px;
+            font-weight: bold;
+            color: #2E8B57;
+        }
+
+
+        nav ul {
+
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+
+        nav ul li a {
+
+            text-decoration: none;
+            color: #333;
+
+            font-size: 16px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        nav ul li a:hover {
+
+            color: #2E8B57;
+        }
+
+
+        /* =========================================
+           PAGE HEADER
+           ========================================= */
+
+        .page-header {
+
+            min-height: 280px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            color: white;
+
+            padding: 40px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.55)
+                ),
+                url("img/kaluwaterfall.png");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .page-header h1 {
+
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+
+        .page-header p {
+
+            font-size: 18px;
+        }
+
+
+        /* =========================================
+           BOOKING SECTION
+           ========================================= */
+
+        .booking-section {
+
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 50px auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1.5fr;
+
+            gap: 35px;
+
+            align-items: start;
+        }
+
+
+        /* =========================================
+           TREK SUMMARY
+           ========================================= */
+
+        .trek-summary {
+
+            background: white;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.10);
+        }
+
+
+        .trek-summary img {
+
+            width: 100%;
+            height: 250px;
+
+            object-fit: cover;
+        }
+
+
+        .trek-summary-content {
+
+            padding: 25px;
+        }
+
+
+        .trek-summary h2 {
+
+            color: #2E8B57;
+
+            margin-bottom: 15px;
+
+            font-size: 26px;
+        }
+
+
+        .trek-info {
+
+            line-height: 2;
+
+            color: #555;
+
+            margin-bottom: 20px;
+        }
+
+
+        .trek-info p {
+
+            border-bottom: 1px solid #eee;
+
+            padding: 4px 0;
+        }
+
+
+        .price-box {
+
+            background: #eef8f2;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+            text-align: center;
+        }
+
+
+        .price-box small {
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+
+        .price-box h3 {
+
+            color: #2E8B57;
+
+            font-size: 30px;
+
+            margin-top: 5px;
+        }
+
+
+        /* =========================================
+           BOOKING FORM
+           ========================================= */
+
+        .booking-form {
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.10);
+        }
+
+
+        .booking-form h2 {
+
+            color: #2E8B57;
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .booking-subtitle {
+
+            color: #777;
+
+            margin-bottom: 28px;
+        }
+
+
+        .form-row {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+
+        .form-group {
+
+            margin-bottom: 20px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            color: #333;
+        }
+
+
+        .form-group input,
+        .form-group select {
+
+            width: 100%;
+
+            height: 50px;
+
+            padding: 0 14px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus {
+
+            border-color: #2E8B57;
+
+            box-shadow:
+                0 0 0 3px rgba(46, 139, 87, 0.10);
+        }
+
+
+        /* =========================================
+           TOTAL PRICE
+           ========================================= */
+
+        .total-box {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            background: #f5f7f5;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+            margin: 5px 0 25px;
+        }
+
+
+        .total-box span:first-child {
+
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+
+        #totalAmount {
+
+            color: #2E8B57;
+
+            font-size: 25px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           CONFIRM BUTTON
+           ========================================= */
+
+        .confirm-btn {
+
+            width: 100%;
+
+            height: 52px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #2E8B57;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .confirm-btn:hover {
+
+            background: #247447;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 18px rgba(46, 139, 87, 0.25);
+        }
+
+
+        /* =========================================
+           MESSAGE
+           ========================================= */
+
+        #bookingMessage {
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            font-size: 15px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================
+           BACK BUTTON
+           ========================================= */
+
+        .back-link {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #555;
+
+            text-decoration: none;
+
+            font-size: 15px;
+        }
+
+
+        .back-link:hover {
+
+            color: #2E8B57;
+        }
+
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+
+        footer {
+
+            background: #1f3d2b;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+
+        /* =========================================
+           TABLET
+           ========================================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                padding: 0 25px;
+            }
+
+            .booking-section {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+           ========================================= */
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                height: auto;
+
+                padding: 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            nav ul {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+
+            .page-header h1 {
+
+                font-size: 34px;
+            }
+
+
+            .booking-section {
+
+                width: 92%;
+
+                margin: 30px auto;
+            }
+
+
+            .booking-form {
+
+                padding: 25px 20px;
+            }
+
+
+            .form-row {
+
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVBAR
+         ========================================= -->
+
+    <nav>
+
+        <div class="logo">
+            🏔️ TrekExplorer
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#about">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#services">
+                    Services
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#contact">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =========================================
+         PAGE HEADER
+         ========================================= -->
+
+    <section
+        class="page-header"
+        id="pageHeader"
+    >
+
+        <div>
+
+            <h1 id="pageTitle">
+                Book Your Trek
+            </h1>
+
+            <p id="pageSubtitle">
+                Your next adventure starts here 🏔️
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         BOOKING SECTION
+         ========================================= -->
+
+    <section class="booking-section">
+
+
+        <!-- =====================================
+             TREK SUMMARY
+             ===================================== -->
+
+        <div class="trek-summary">
+
+
+            <img
+                id="trekImage"
+                src="img/kalsubai.jpeg"
+                alt="Trek Image"
+            >
+
+
+            <div class="trek-summary-content">
+
+
+                <h2 id="trekName">
+                    Kalsubai Trek
+                </h2>
+
+
+                <div class="trek-info">
+
+
+                    <p>
+
+                        📍
+                        <strong>
+                            Location:
+                        </strong>
+
+                        <span id="trekLocation">
+                            Ahmednagar, Maharashtra
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        ⛰️
+                        <strong>
+                            Difficulty:
+                        </strong>
+
+                        <span id="trekDifficulty">
+                            Moderate
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        📏
+                        <strong>
+                            Distance:
+                        </strong>
+
+                        <span id="trekDistance">
+                            Approx. 6.5 KM
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        ⏱️
+                        <strong>
+                            Duration:
+                        </strong>
+
+                        <span id="trekDuration">
+                            5–6 Hours
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        🏔️
+                        <strong>
+                            Height:
+                        </strong>
+
+                        <span id="trekHeight">
+                            5,400 ft
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        🚩
+                        <strong>
+                            Starting Point:
+                        </strong>
+
+                        <span id="trekStartingPoint">
+                            Bari Village
+                        </span>
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="price-box">
+
+
+                    <small>
+                        Trek Price
+                    </small>
+
+
+                    <h3>
+
+                        <span id="trekPrice">
+                            ₹999
+                        </span>
+
+                        <small>
+                            / person
+                        </small>
+
+                    </h3>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             BOOKING FORM
+             ===================================== -->
+
+        <div class="booking-form">
+
+
+            <h2>
+                🎟️ Booking Details
+            </h2>
+
+
+            <p class="booking-subtitle">
+
+                Book your spot for
+
+                <strong id="bookingTrekName">
+                    Kalsubai Trek
+                </strong>
+
+            </p>
+
+
+            <form id="bookingForm">
+
+
+                <!-- NAME + EMAIL -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- PHONE + DATE -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter 10-digit phone number"
+                            pattern="[0-9]{10}"
+                            maxlength="10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="trekDate">
+                            Trek Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="trekDate"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- NUMBER OF PEOPLE -->
+
+                <div class="form-group">
+
+                    <label for="people">
+                        Number of People
+                    </label>
+
+
+                    <select
+                        id="people"
+                        required
+                    >
+
+                        <option value="">
+                            Select number of people
+                        </option>
+
+                        <option value="1">
+                            1 Person
+                        </option>
+
+                        <option value="2">
+                            2 People
+                        </option>
+
+                        <option value="3">
+                            3 People
+                        </option>
+
+                        <option value="4">
+                            4 People
+                        </option>
+
+                        <option value="5">
+                            5 People
+                        </option>
+
+                        <option value="6">
+                            6 People
+                        </option>
+
+                        <option value="7">
+                            7 People
+                        </option>
+
+                        <option value="8">
+                            8 People
+                        </option>
+
+                        <option value="9">
+                            9 People
+                        </option>
+
+                        <option value="10">
+                            10 People
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- TOTAL -->
+
+                <div class="total-box">
+
+                    <span>
+                        Total Amount
+                    </span>
+
+                    <span id="totalAmount">
+                        ₹0
+                    </span>
+
+                </div>
+
+
+
+                <!-- CONFIRM -->
+
+                <button
+                    type="submit"
+                    class="confirm-btn"
+                >
+
+                    Confirm Booking
+
+                </button>
+
+
+                <p id="bookingMessage"></p>
+
+
+            </form>
+
+
+            <a
+                href="trek-details.html"
+                class="back-link"
+            >
+
+                ← Back to Trek Details
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer>
+
+        <p>
+            © 2026 TrekExplorer. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+         ========================================= -->
+
+    <script>
+
+
+        /* =========================================
+           GET TREK DATA FROM LOCAL STORAGE
+        ========================================= */
+
+        const selectedTrek =
+            localStorage.getItem("selectedTrek");
+
+
+        const trekPrice =
+            Number(
+                localStorage.getItem("trekPrice")
+            ) || 999;
+
+
+        const trekImage =
+            localStorage.getItem("trekImage")
+            || "img/kalsubai.jpeg";
+
+
+        const trekLocation =
+            localStorage.getItem("trekLocation")
+            || "Ahmednagar, Maharashtra";
+
+
+        const trekDifficulty =
+            localStorage.getItem("trekDifficulty")
+            || "Moderate";
+
+
+        const trekDistance =
+            localStorage.getItem("trekDistance")
+            || "Approx. 6.5 KM";
+
+
+        const trekDuration =
+            localStorage.getItem("trekDuration")
+            || "5–6 Hours";
+
+
+        const trekHeight =
+            localStorage.getItem("trekHeight")
+            || "5,400 ft";
+
+
+        const trekStartingPoint =
+            localStorage.getItem("trekStartingPoint")
+            || "Bari Village";
+
+
+
+        /* =========================================
+           DISPLAY TREK INFORMATION
+        ========================================= */
+
+
+        document.getElementById(
+            "trekName"
+        ).textContent =
+            selectedTrek || "Kalsubai Trek";
+
+
+        document.getElementById(
+            "bookingTrekName"
+        ).textContent =
+            selectedTrek || "Kalsubai Trek";
+
+
+        document.getElementById(
+            "trekImage"
+        ).src =
+            trekImage;
+
+
+        document.getElementById(
+            "trekImage"
+        ).alt =
+            selectedTrek || "Trek Image";
+
+
+        document.getElementById(
+            "trekLocation"
+        ).textContent =
+            trekLocation;
+
+
+        document.getElementById(
+            "trekDifficulty"
+        ).textContent =
+            trekDifficulty;
+
+
+        document.getElementById(
+            "trekDistance"
+        ).textContent =
+            trekDistance;
+
+
+        document.getElementById(
+            "trekDuration"
+        ).textContent =
+            trekDuration;
+
+
+        document.getElementById(
+            "trekHeight"
+        ).textContent =
+            trekHeight;
+
+
+        document.getElementById(
+            "trekStartingPoint"
+        ).textContent =
+            trekStartingPoint;
+
+
+        document.getElementById(
+            "trekPrice"
+        ).textContent =
+            "₹" + trekPrice.toLocaleString("en-IN");
+
+
+
+        /* =========================================
+           CHANGE PAGE HEADER IMAGE
+        ========================================= */
+
+        document.getElementById(
+            "pageHeader"
+        ).style.backgroundImage =
+
+            `
+            linear-gradient(
+                rgba(0, 0, 0, 0.55),
+                rgba(0, 0, 0, 0.55)
+            ),
+            url("${trekImage}")
+            `;
+
+
+
+        /* =========================================
+           PAGE TITLE
+        ========================================= */
+
+        document.title =
+            (selectedTrek || "Book Trek")
+            + " | TrekExplorer";
+
+
+
+        /* =========================================
+           SET MINIMUM TREK DATE
+        ========================================= */
+
+        const today =
+            new Date()
+                .toISOString()
+                .split("T")[0];
+
+
+        document.getElementById(
+            "trekDate"
+        ).setAttribute(
+            "min",
+            today
+        );
+
+
+
+        /* =========================================
+           CALCULATE TOTAL PRICE
+        ========================================= */
+
+        const peopleSelect =
+            document.getElementById(
+                "people"
+            );
+
+
+        const totalAmount =
+            document.getElementById(
+                "totalAmount"
+            );
+
+
+        peopleSelect.addEventListener(
+            "change",
+            function () {
+
+                const people =
+                    Number(this.value);
+
+
+                const total =
+                    people * trekPrice;
+
+
+                totalAmount.textContent =
+                    "₹" +
+                    total.toLocaleString("en-IN");
+
+            }
+        );
+
+
+
+        /* =========================================
+           BOOKING FORM
+        ========================================= */
+
+        document.getElementById(
+            "bookingForm"
+        ).addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document.getElementById(
+                        "name"
+                    ).value;
+
+
+                const email =
+                    document.getElementById(
+                        "email"
+                    ).value;
+
+
+                const phone =
+                    document.getElementById(
+                        "phone"
+                    ).value;
+
+
+                const trekDate =
+                    document.getElementById(
+                        "trekDate"
+                    ).value;
+
+
+                const people =
+                    document.getElementById(
+                        "people"
+                    ).value;
+
+
+                const total =
+                    Number(people) *
+                    trekPrice;
+
+
+
+                /* PHONE VALIDATION */
+
+                if (phone.length !== 10) {
+
+                    document.getElementById(
+                        "bookingMessage"
+                    ).style.color = "red";
+
+
+                    document.getElementById(
+                        "bookingMessage"
+                    ).textContent =
+                        "❌ Please enter a valid 10-digit phone number.";
+
+                    return;
+
+                }
+
+
+
+                /* SUCCESS MESSAGE */
+
+                document.getElementById(
+                    "bookingMessage"
+                ).style.color =
+                    "#2E8B57";
+
+
+                document.getElementById(
+                    "bookingMessage"
+                ).textContent =
+
+                    "✅ Booking for " +
+                    (selectedTrek || "Kalsubai Trek") +
+                    " submitted successfully!";
+
+
+                /* CONSOLE */
+
+                console.log({
+
+                    name: name,
+
+                    email: email,
+
+                    phone: phone,
+
+                    trek:
+                        selectedTrek ||
+                        "Kalsubai Trek",
+
+                    trekDate: trekDate,
+
+                    people: people,
+
+                    totalAmount: total
+
+                });
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

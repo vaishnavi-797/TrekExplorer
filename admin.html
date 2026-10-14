@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TrekExplorer Admin</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f5;
+            color: #333;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 80px;
+            background: white;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 7%;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2e8b57;
+        }
+
+        .admin-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .admin-name {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+
+            border: none;
+            padding: 11px 20px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
+        }
+
+
+        /* MAIN */
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+
+            margin: 50px auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #777;
+        }
+
+        .refresh-btn {
+            background: #2e8b57;
+            color: white;
+
+            border: none;
+
+            padding: 13px 22px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 15px;
+        }
+
+        .refresh-btn:hover {
+            background: #247447;
+        }
+
+
+        /* STATISTICS */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 25px;
+
+            margin-bottom: 45px;
+        }
+
+        .stat-card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .stat-icon {
+            width: 65px;
+            height: 65px;
+
+            background: #e5f5ec;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 30px;
+        }
+
+        .stat-number {
+            font-size: 32px;
+
+            font-weight: bold;
+
+            color: #2e8b57;
+        }
+
+        .stat-title {
+            color: #777;
+
+            font-size: 16px;
+        }
+
+
+        /* MESSAGES */
+
+        .messages-title {
+            font-size: 28px;
+
+            margin-bottom: 20px;
+        }
+
+        #messageContainer {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+        }
+
+        .message-card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .message-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            border-bottom: 1px solid #eee;
+
+            padding-bottom: 20px;
+
+            margin-bottom: 20px;
+        }
+
+        .sender {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 55px;
+            height: 55px;
+
+            background: #2e8b57;
+
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 22px;
+
+            font-weight: bold;
+        }
+
+        .sender h3 {
+            margin-bottom: 5px;
+        }
+
+        .email {
+            color: #777;
+
+            font-size: 14px;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+
+            color: white;
+
+            border: none;
+
+            padding: 10px 17px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .delete-btn:hover {
+            background: #c82333;
+        }
+
+        .message-content {
+            background: #f7f9f8;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+            margin-bottom: 15px;
+        }
+
+        .message-content h4 {
+            margin-bottom: 10px;
+
+            color: #2e8b57;
+        }
+
+        .message-content p {
+            line-height: 1.6;
+
+            color: #444;
+        }
+
+        .date {
+            color: #888;
+
+            font-size: 14px;
+        }
+
+
+        /* LOADING */
+
+        .loading {
+            background: white;
+
+            padding: 40px;
+
+            text-align: center;
+
+            border-radius: 15px;
+
+            color: #777;
+        }
+
+        .empty {
+            background: white;
+
+            padding: 50px;
+
+            text-align: center;
+
+            border-radius: 15px;
+
+            color: #777;
+        }
+
+        .error {
+            background: #ffe5e5;
+
+            color: #b00020;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .header {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 20px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .message-top {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+            }
+
+            .delete-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🏔️ TrekExplorer
+        </div>
+
+        <div class="admin-area">
+
+            <span class="admin-name">
+                👤 Admin
+            </span>
+
+            <button
+                class="logout-btn"
+                onclick="logout()">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+        <div class="header">
+
+            <div>
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+                <p>
+                    Manage TrekExplorer contact messages.
+                </p>
+
+            </div>
+
+            <button
+                class="refresh-btn"
+                onclick="loadMessages()">
+
+                🔄 Refresh
+
+            </button>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📩
+                </div>
+
+                <div>
+
+                    <div
+                        class="stat-number"
+                        id="messageCount">
+
+                        0
+
+                    </div>
+
+                    <div class="stat-title">
+                        Total Messages
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <div
+                        class="stat-number"
+                        id="visitorCount">
+
+                        0
+
+                    </div>
+
+                    <div class="stat-title">
+                        People Contacted
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGES -->
+
+        <h2 class="messages-title">
+            📩 Contact Messages
+        </h2>
+
+
+        <div id="messageContainer">
+
+            <div class="loading">
+                Loading messages...
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        const API_URL =
+            "http://localhost:8080/api/contact";
+
+
+        // =========================================
+        // LOAD ALL MESSAGES
+        // =========================================
+
+        async function loadMessages() {
+
+            const container =
+                document.getElementById(
+                    "messageContainer"
+                );
+
+            container.innerHTML = `
+                <div class="loading">
+                    🔄 Loading messages...
+                </div>
+            `;
+
+
+            try {
+
+                const response =
+                    await fetch(API_URL);
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Server returned " +
+                        response.status
+                    );
+
+                }
+
+
+                const messages =
+                    await response.json();
+
+
+                console.log(
+                    "Messages received:",
+                    messages
+                );
+
+
+                displayMessages(messages);
+
+
+            } catch (error) {
+
+                console.error(
+                    "Error:",
+                    error
+                );
+
+
+                container.innerHTML = `
+
+                    <div class="error">
+
+                        ❌ <strong>
+                            Could not load messages.
+                        </strong>
+
+                        <br><br>
+
+                        Make sure your Spring Boot
+                        application is running on:
+
+                        <br>
+
+                        <strong>
+                            http://localhost:8080
+                        </strong>
+
+                        <br><br>
+
+                        Error:
+                        ${error.message}
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+        // =========================================
+        // DISPLAY MESSAGES
+        // =========================================
+
+        function displayMessages(messages) {
+
+            const container =
+                document.getElementById(
+                    "messageContainer"
+                );
+
+
+            // Update total messages
+
+            document.getElementById(
+                "messageCount"
+            ).textContent =
+                messages.length;
+
+
+            // Count unique people
+
+            const emails =
+                new Set(
+                    messages
+                        .map(item => item.email)
+                        .filter(Boolean)
+                );
+
+
+            document.getElementById(
+                "visitorCount"
+            ).textContent =
+                emails.size;
+
+
+            // No messages
+
+            if (messages.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="empty">
+
+                        📭
+
+                        <h3>
+                            No messages yet
+                        </h3>
+
+                        <br>
+
+                        <p>
+                            Contact messages will
+                            appear here.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            // Display messages
+
+            container.innerHTML =
+                messages.map(message => {
+
+                    const name =
+                        message.name ||
+                        "Unknown User";
+
+
+                    const email =
+                        message.email ||
+                        "No email";
+
+
+                    const userMessage =
+                        message.message ||
+                        message.messages ||
+                        "No message";
+
+
+                    const date =
+                        message.createdAt ||
+                        message.created_at ||
+                        null;
+
+
+                    const firstLetter =
+                        name
+                            .charAt(0)
+                            .toUpperCase();
+
+
+                    return `
+
+                        <div class="message-card">
+
+                            <div class="message-top">
+
+                                <div class="sender">
+
+                                    <div class="avatar">
+
+                                        ${firstLetter}
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <h3>
+
+                                            ${escapeHtml(name)}
+
+                                        </h3>
+
+
+                                        <div class="email">
+
+                                            📧
+                                            ${escapeHtml(email)}
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="deleteMessage(${message.id})">
+
+                                    🗑️ Delete
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="message-content">
+
+                                <h4>
+                                    💬 Message
+                                </h4>
+
+                                <p>
+
+                                    ${escapeHtml(userMessage)}
+
+                                </p>
+
+                            </div>
+
+
+                            <div class="date">
+
+                                📅
+                                ${formatDate(date)}
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }).join("");
+
+        }
+
+
+        // =========================================
+        // DELETE MESSAGE
+        // =========================================
+
+        async function deleteMessage(id) {
+
+            const confirmDelete =
+                confirm(
+                    "Are you sure you want to delete this message?"
+                );
+
+
+            if (!confirmDelete) {
+                return;
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API_URL}/${id}`,
+                        {
+                            method: "DELETE"
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Delete failed"
+                    );
+
+                }
+
+
+                alert(
+                    "Message deleted successfully!"
+                );
+
+
+                loadMessages();
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Could not delete the message."
+                );
+
+            }
+
+        }
+
+
+        // =========================================
+        // FORMAT DATE
+        // =========================================
+
+        function formatDate(date) {
+
+            if (!date) {
+
+                return "Date unavailable";
+
+            }
+
+
+            const parsedDate =
+                new Date(date);
+
+
+            if (
+                isNaN(
+                    parsedDate.getTime()
+                )
+            ) {
+
+                return "Date unavailable";
+
+            }
+
+
+            return parsedDate.toLocaleString();
+
+        }
+
+
+        // =========================================
+        // SECURITY
+        // =========================================
+
+        function escapeHtml(value) {
+
+            return String(value)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+
+        }
+
+
+        // =========================================
+        // LOGOUT
+        // =========================================
+
+        function logout() {
+
+            window.location.href =
+                "index.html";
+
+        }
+
+
+        // =========================================
+        // LOAD WHEN PAGE OPENS
+        // =========================================
+
+        loadMessages();
+
+    </script>
+
+</body>
+
+</html>

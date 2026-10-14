@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trek Details | TrekExplorer</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7f6;
+            color: #333;
+        }
+
+
+header {
+    width: 100%;
+}
+
+nav {
+    height: 75px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 60px;
+
+    background: #ffffff;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* Logo */
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #2E8B57;
+}
+
+
+/* Navigation links */
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #2E8B57;
+}
+
+
+/* =========================================
+   AUTH BUTTONS
+   ========================================= */
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.login-btn,
+.signup-btn {
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.login-btn {
+    color: #2E8B57;
+    border: 1px solid #2E8B57;
+}
+
+.login-btn:hover {
+    background: #2E8B57;
+    color: white;
+}
+
+.signup-btn {
+    background: #2E8B57;
+    color: white;
+}
+
+.signup-btn:hover {
+    background: #228B22;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .nav-container {
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+    }
+}
+
+        /* ================= HERO ================= */
+
+        .hero {
+
+            height: 450px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.45),
+                    rgba(0,0,0,0.45)
+                );
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+        }
+
+
+        /* ================= MAIN CONTAINER ================= */
+
+        .container {
+
+            width: 90%;
+            max-width: 1200px;
+
+            margin: 50px auto;
+        }
+
+
+        /* ================= INFO CARDS ================= */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+
+            background: white;
+
+            padding: 25px 15px;
+
+            text-align: center;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0,0,0,0.08);
+        }
+
+        .info-card .icon {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .info-card h3 {
+
+            color: #2e8b57;
+
+            margin-bottom: 7px;
+        }
+
+        .info-card p {
+
+            color: #555;
+        }
+
+
+        /* ================= CONTENT ================= */
+
+        .content-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr;
+
+            gap: 35px;
+        }
+
+        .content-box {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0,0,0,0.08);
+
+            margin-bottom: 25px;
+        }
+
+        .content-box h2 {
+
+            color: #2e8b57;
+
+            margin-bottom: 18px;
+        }
+
+        .content-box p {
+
+            line-height: 1.7;
+
+            color: #555;
+        }
+
+        .content-box ul {
+
+            padding-left: 20px;
+
+            line-height: 2;
+
+            color: #555;
+        }
+
+
+        /* ================= BOOKING CARD ================= */
+
+        .booking-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.12);
+
+            position: sticky;
+
+            top: 100px;
+        }
+
+        .booking-card h2 {
+
+            color: #2e8b57;
+
+            margin-bottom: 15px;
+        }
+
+        .price {
+
+            font-size: 32px;
+
+            font-weight: bold;
+
+            color: #222;
+
+            margin: 15px 0;
+        }
+
+        .price span {
+
+            font-size: 15px;
+
+            color: #777;
+
+            font-weight: normal;
+        }
+
+        .booking-info {
+
+            margin: 20px 0;
+
+            line-height: 2;
+
+            color: #555;
+        }
+
+        .book-btn {
+
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #2e8b57;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .book-btn:hover {
+
+            background: #247447;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            background: #222;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .info-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .content-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .booking-card {
+
+                position: static;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav ul {
+
+                gap: 12px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .hero {
+
+                height: 350px;
+            }
+
+            .hero-content h1 {
+
+                font-size: 38px;
+            }
+
+            .info-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+
+    <div class="logo">
+        🏔 TrekExplorer
+    </div>
+
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#treks">Treks</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#">Contact</a></li>
+    </ul>
+
+    <div class="auth-buttons" id="authButtons">
+
+        <a href="login.html" class="login-btn">
+            Login
+        </a>
+
+        <a href="signup.html" class="signup-btn">
+            Sign Up
+        </a>
+
+    </div>
+
+</nav>
+</nav>
+<!-- ================= HERO ================= -->
+
+<section
+    class="hero"
+    id="hero"
+>
+
+    <div class="hero-content">
+
+        <h1 id="trekName">
+            Trek Details
+        </h1>
+
+        <p id="heroDescription">
+            Explore the beautiful Sahyadri mountains
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+
+    <!-- ================= TREK INFORMATION ================= -->
+
+    <div class="info-grid">
+
+
+        <div class="info-card">
+
+            <div class="icon">
+                📍
+            </div>
+
+            <h3>
+                Location
+            </h3>
+
+            <p id="location">
+                -
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="icon">
+                ⛰️
+            </div>
+
+            <h3>
+                Difficulty
+            </h3>
+
+            <p id="difficulty">
+                -
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="icon">
+                📏
+            </div>
+
+            <h3>
+                Distance
+            </h3>
+
+            <p id="distance">
+                -
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="icon">
+                🏔️
+            </div>
+
+            <h3>
+                Height
+            </h3>
+
+            <p id="height">
+                -
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= CONTENT ================= -->
+
+    <div class="content-grid">
+
+
+        <!-- ================= LEFT SIDE ================= -->
+
+        <div>
+
+
+            <!-- ABOUT -->
+
+            <div class="content-box">
+
+                <h2>
+                    About <span id="aboutName">
+                        Trek
+                    </span>
+                </h2>
+
+                <p id="aboutText">
+                    -
+                </p>
+
+            </div>
+
+
+
+            <!-- TREK DETAILS -->
+
+            <div class="content-box">
+
+                <h2>
+                    📋 Trek Details
+                </h2>
+
+                <ul>
+
+                    <li>
+                        <strong>
+                            Starting Point:
+                        </strong>
+
+                        <span id="startingPoint">
+                            -
+                        </span>
+                    </li>
+
+
+                    <li>
+                        <strong>
+                            Difficulty:
+                        </strong>
+
+                        <span id="detailDifficulty">
+                            -
+                        </span>
+                    </li>
+
+
+                    <li>
+                        <strong>
+                            Duration:
+                        </strong>
+
+                        <span id="duration">
+                            -
+                        </span>
+                    </li>
+
+
+                    <li>
+                        <strong>
+                            Best Season:
+                        </strong>
+
+                        <span id="season">
+                            -
+                        </span>
+                    </li>
+
+
+                    <li>
+                        <strong>
+                            Maximum Altitude:
+                        </strong>
+
+                        <span id="detailHeight">
+                            -
+                        </span>
+                    </li>
+
+
+                    <li>
+                        <strong>
+                            Trek Type:
+                        </strong>
+
+                        <span id="trekType">
+                            -
+                        </span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <!-- ================= RIGHT SIDE ================= -->
+
+        <div>
+
+            <div class="booking-card">
+
+                <h2>
+                    🎟️ Book This Trek
+                </h2>
+
+                <p id="bookingText">
+                    Reserve your spot for this trek.
+                </p>
+
+
+                <div class="price">
+
+                    <span id="price">
+                        ₹999
+                    </span>
+
+                    <span>
+                        / person
+                    </span>
+
+                </div>
+
+
+                <div class="booking-info">
+
+                    <p>
+                        ⏱️ Duration:
+                        <span id="bookingDuration">
+                            -
+                        </span>
+                    </p>
+
+                    <p>
+                        📍
+                        <span id="bookingLocation">
+                            -
+                        </span>
+                    </p>
+
+                    <p>
+                        👥 Limited Seats
+                    </p>
+
+                    <p>
+                        🎒 Guide Included
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="book-btn"
+                    onclick="bookTrek()"
+                >
+
+                    Book Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 TrekExplorer. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* =========================================
+   ALL TREK DATA
+========================================= */
+
+const treks = {
+
+
+    /* =====================================
+       KALSUBAI
+    ===================================== */
+
+    kalsubai: {
+
+        name: "Kalsubai Trek",
+
+        heroDescription:
+            "Explore the highest peak of Maharashtra",
+
+        image:
+            "img/kalsubai.jpeg",
+
+        location:
+            "Ahmednagar, Maharashtra",
+
+        difficulty:
+            "Moderate",
+
+        distance:
+            "Approx. 6.5 KM",
+
+        height:
+            "5,400 ft",
+
+        startingPoint:
+            "Bari Village",
+
+        duration:
+            "5–6 Hours",
+
+        season:
+            "June to February",
+
+        trekType:
+            "Mountain Trek",
+
+        price:
+            999,
+
+        about:
+            "Kalsubai Peak is the highest peak in Maharashtra, standing at approximately 5,400 feet above sea level. The trek offers beautiful mountain views, green valleys and scenic landscapes. The trek starts from Bari village and takes you through rocky paths, ladders and beautiful surroundings. The summit provides a spectacular panoramic view of the Sahyadri mountain range.",
+
+        carry: [
+
+            "Water bottle",
+
+            "Trekking shoes",
+
+            "Comfortable clothes",
+
+            "Energy snacks",
+
+            "First aid kit",
+
+            "Raincoat during monsoon",
+
+            "Mobile phone and power bank",
+
+            "Personal medicines if required"
+
+        ],
+
+        important: [
+
+            "Follow the instructions of the trek guide.",
+
+            "Do not throw plastic or waste on the trail.",
+
+            "Stay with the trekking group.",
+
+            "Carry sufficient drinking water.",
+
+            "Check weather conditions before starting."
+
+        ]
+
+    },
+
+
+    /* =====================================
+       RAJGAD
+    ===================================== */
+
+    rajgad: {
+
+        name:
+            "Rajgad Fort Trek",
+
+        heroDescription:
+            "Explore the historic fort of Chhatrapati Shivaji Maharaj",
+
+        image:
+            "img/rajgad.png",
+
+        location:
+            "Pune, Maharashtra",
+
+        difficulty:
+            "Moderate",
+
+        distance:
+            "Approx. 7 KM",
+
+        height:
+            "4,514 ft",
+
+        startingPoint:
+            "Gunjavane Village",
+
+        duration:
+            "5–6 Hours",
+
+        season:
+            "June to February",
+
+        trekType:
+            "Historical Mountain Trek",
+
+        price:
+            899,
+
+        about:
+            "Rajgad Fort is one of the most important historical forts in Maharashtra. It was an important fort during the reign of Chhatrapati Shivaji Maharaj. The trek offers beautiful views of the Sahyadri mountains, valleys and surrounding forts. The fort is famous for its historic structures and scenic trekking trails.",
+
+        
+
+        important: [
+
+            "Follow the instructions of the trek guide.",
+
+            "Wear proper trekking shoes.",
+
+            "Do not throw plastic or waste on the trail.",
+
+            "Stay with the trekking group.",
+
+            "Carry sufficient drinking water.",
+
+            "Respect the historical structures of the fort."
+
+        ]
+
+    },
+
+
+    /* =====================================
+       HARISHCHANDRAGAD
+    ===================================== */
+
+    harishchandragad: {
+
+        name:
+            "Harishchandragad Trek",
+
+        heroDescription:
+            "Explore the beautiful Konkan Kada and Sahyadri mountains",
+
+        image:
+            "img/harishchandra.png",
+
+        location:
+            "Ahmednagar, Maharashtra",
+
+        difficulty:
+            "Hard",
+
+        distance:
+            "Approx. 8 KM",
+
+        height:
+            "4,670 ft",
+
+        startingPoint:
+            "Khireshwar Village",
+
+        duration:
+            "6–8 Hours",
+
+        season:
+            "October to February",
+
+        trekType:
+            "Mountain & Historical Trek",
+
+        price:
+            1199,
+
+        about:
+            "Harishchandragad is one of the most famous trekking destinations in Maharashtra. It is known for the spectacular Konkan Kada, ancient temples, caves and beautiful Sahyadri mountain views. The trek takes you through rocky trails, forests and scenic mountain paths.",
+
+    
+
+    },
+
+
+    /* =====================================
+       KOKANKADA
+    ===================================== */
+
+    kokankada: {
+
+        name:
+            "KokanKada Trek",
+
+        heroDescription:
+            "Experience the breathtaking Konkan Kada cliff",
+
+        image:
+            "img/kokankada.png",
+
+        location:
+            "Harishchandragad, Maharashtra",
+
+        difficulty:
+            "Hard",
+
+        distance:
+            "Approx. 9 KM",
+
+        height:
+            "4,670 ft",
+
+        startingPoint:
+            "Khireshwar Village",
+
+        duration:
+            "7–8 Hours",
+
+        season:
+            "October to February",
+
+        trekType:
+            "Adventure & Mountain Trek",
+
+        price:
+            1299,
+
+        about:
+            "KokanKada is one of the most spectacular cliff viewpoints in the Sahyadri mountains. It is famous for its massive cliff and breathtaking views of the Konkan region. The trek offers beautiful mountain landscapes, valleys and an unforgettable experience at the famous KokanKada cliff.",
+
+    },
+
+
+    /* =====================================
+       HARIHAR
+    ===================================== */
+
+    harihar: {
+
+        name:
+            "Harihar Fort Trek",
+
+        heroDescription:
+            "Experience the iconic rock-cut staircase",
+
+        image:
+            "img/harihar.png",
+
+        location:
+            "Nashik, Maharashtra",
+
+        difficulty:
+            "Moderate",
+
+        distance:
+            "Approx. 4 KM",
+
+        height:
+            "3,676 ft",
+
+        startingPoint:
+            "Nirgudpada Village",
+
+        duration:
+            "4–5 Hours",
+
+        season:
+            "June to February",
+
+        trekType:
+            "Adventure Mountain Trek",
+
+        price:
+            799,
+
+        about:
+            "Harihar Fort is one of Maharashtra's most adventurous trekking destinations. It is famous for its unique rock-cut staircase and steep climb. The trek provides an exciting adventure along with beautiful views of the surrounding Sahyadri mountains and valleys.",
+
+
+  
+
+    },
+
+
+    /* =====================================
+       KALU WATERFALL
+    ===================================== */
+
+    "kalu-waterfall": {
+
+        name:
+            "Kalu Waterfall Trek",
+
+        heroDescription:
+            "Explore the beautiful monsoon waterfall of Sahyadri",
+
+        image:
+            "img/kaluwaterfall.png",
+
+        location:
+            "Murbad, Maharashtra",
+
+        difficulty:
+            "Moderate",
+
+        distance:
+            "Approx. 5 KM",
+
+        height:
+            "Approx. 1,200 ft",
+
+        startingPoint:
+            "Thitbi Village",
+
+        duration:
+            "4–5 Hours",
+
+        season:
+            "July to October",
+
+        trekType:
+            "Waterfall & Nature Trek",
+
+        price:
+            699,
+
+        about:
+            "Kalu Waterfall is a beautiful monsoon destination near Malshej Ghat. It is surrounded by lush green Sahyadri mountains and scenic landscapes. The trek provides a peaceful experience through green valleys and natural surroundings. The waterfall becomes especially beautiful during the monsoon season.",
+
+
+    }
+
+};
+
+
+
+/* =========================================
+   GET TREK FROM URL
+========================================= */
+
+const urlParams =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const trekId =
+    urlParams.get("trek");
+
+const trek =
+    treks[trekId];
+
+
+/* =========================================
+   DISPLAY TREK
+========================================= */
+
+if (trek) {
+
+
+    /* PAGE TITLE */
+
+    document.title =
+        trek.name + " | TrekExplorer";
+
+
+    /* HERO */
+
+    document.getElementById(
+        "hero"
+    ).style.backgroundImage =
+
+        `linear-gradient(
+            rgba(0,0,0,0.45),
+            rgba(0,0,0,0.45)
+        ),
+        url('${trek.image}')`;
+
+
+    document.getElementById(
+        "trekName"
+    ).textContent =
+        trek.name;
+
+
+    document.getElementById(
+        "heroDescription"
+    ).textContent =
+        trek.heroDescription;
+
+
+    /* INFO */
+
+    document.getElementById(
+        "location"
+    ).textContent =
+        trek.location;
+
+
+    document.getElementById(
+        "difficulty"
+    ).textContent =
+        trek.difficulty;
+
+
+    document.getElementById(
+        "distance"
+    ).textContent =
+        trek.distance;
+
+
+    document.getElementById(
+        "height"
+    ).textContent =
+        trek.height;
+
+
+    /* ABOUT */
+
+    document.getElementById(
+        "aboutName"
+    ).textContent =
+        trek.name;
+
+
+    document.getElementById(
+        "aboutText"
+    ).textContent =
+        trek.about;
+
+
+    /* TREK DETAILS */
+
+    document.getElementById(
+        "startingPoint"
+    ).textContent =
+        trek.startingPoint;
+
+
+    document.getElementById(
+        "detailDifficulty"
+    ).textContent =
+        trek.difficulty;
+
+
+    document.getElementById(
+        "duration"
+    ).textContent =
+        trek.duration;
+
+
+    document.getElementById(
+        "season"
+    ).textContent =
+        trek.season;
+
+
+    document.getElementById(
+        "detailHeight"
+    ).textContent =
+        trek.height;
+
+
+    document.getElementById(
+        "trekType"
+    ).textContent =
+        trek.trekType;
+
+
+    /* PRICE */
+
+    document.getElementById(
+        "price"
+    ).textContent =
+        "₹" + trek.price;
+
+
+    /* BOOKING INFORMATION */
+
+    document.getElementById(
+        "bookingDuration"
+    ).textContent =
+        trek.duration;
+
+
+    document.getElementById(
+        "bookingLocation"
+    ).textContent =
+        trek.startingPoint;
+
+
+    document.getElementById(
+        "bookingText"
+    ).textContent =
+        "Reserve your spot for the " +
+        trek.name + ".";
+
+
+    /* WHAT TO CARRY */
+
+    const carryList =
+        document.getElementById(
+            "carryList"
+        );
+
+    carryList.innerHTML = "";
+
+    trek.carry.forEach(
+        function(item) {
+
+            const li =
+                document.createElement("li");
+
+            li.textContent = item;
+
+            carryList.appendChild(li);
+
+        }
+    );
+
+
+    /* IMPORTANT INFORMATION */
+
+    const importantList =
+        document.getElementById(
+            "importantList"
+        );
+
+    importantList.innerHTML = "";
+
+    trek.important.forEach(
+        function(item) {
+
+            const li =
+                document.createElement("li");
+
+            li.textContent = item;
+
+            importantList.appendChild(li);
+
+        }
+    );
+
+
+    /* SAVE FOR BOOKING */
+
+    localStorage.setItem(
+        "selectedTrek",
+        trek.name
+    );
+
+    localStorage.setItem(
+        "trekPrice",
+        trek.price
+    );
+
+
+} else {
+
+
+    /* INVALID TREK */
+
+    document.querySelector(
+        ".container"
+    ).innerHTML = `
+
+        <div class="content-box"
+             style="text-align:center;">
+
+            <h2>
+                Trek Not Found
+            </h2>
+
+            <p>
+                Please select a trek from the home page.
+            </p>
+
+            <br>
+
+            <a href="index.html"
+               style="
+                    color:#2e8b57;
+                    font-weight:bold;
+                    text-decoration:none;
+               ">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* =========================================
+   BOOK TREK
+========================================= */
+
+function bookTrek() {
+
+    if (!trek) {
+        return;
+    }
+
+    localStorage.setItem(
+        "selectedTrek",
+        trek.name
+    );
+
+    localStorage.setItem(
+        "trekPrice",
+        trek.price
+    );
+
+    localStorage.setItem(
+        "trekImage",
+        trek.image
+    );
+
+    localStorage.setItem(
+        "trekLocation",
+        trek.location
+    );
+
+    localStorage.setItem(
+        "trekDifficulty",
+        trek.difficulty
+    );
+
+    localStorage.setItem(
+        "trekDistance",
+        trek.distance
+    );
+
+    localStorage.setItem(
+        "trekDuration",
+        trek.duration
+    );
+
+    localStorage.setItem(
+        "trekHeight",
+        trek.height
+    );
+
+    localStorage.setItem(
+        "trekStartingPoint",
+        trek.startingPoint
+    );
+
+    window.location.href = "booking.html";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
