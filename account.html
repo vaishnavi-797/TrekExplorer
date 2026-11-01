@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account | TrekExplorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+    <div class="auth-container">
+
+        <div class="auth-box">
+
+            <div class="account-avatar">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8H4z"/>
+                </svg>
+            </div>
+
+            <h1>My Account</h1>
+
+            <p class="auth-subtitle">
+                Your TrekExplorer profile
+            </p>
+
+            <div class="account-info">
+                <p><strong>Name:</strong> <span id="accName">Loading...</span></p>
+                <p><strong>Email:</strong> <span id="accEmail">Loading...</span></p>
+            </div>
+
+            <button id="accLogout" class="auth-submit">
+                Logout
+            </button>
+
+            <a href="index.html" class="back-home">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="account.js"></script>
+
+</body>
+</html>

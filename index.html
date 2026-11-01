@@ -197,7 +197,9 @@ needed for your next adventure.
 </footer>
 
 </body>
-<script>
+
+<!-- Contact form -->
+<script type="module">
 
 document.getElementById("contactForm").addEventListener("submit", async function (event) {
 
@@ -257,37 +259,9 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
 });
 
-const user = JSON.parse(localStorage.getItem("user"));
-
-const authButtons = document.getElementById("authButtons");
-
-if (user) {
-
-    authButtons.innerHTML = `
-
-        <span class="welcome-user">
-
-            Welcome, ${user.name}
-
-        </span>
-
-        <button class="logout-btn" onclick="logout()">
-
-            Logout
-
-        </button>
-
-    `;
-
-}
-
-function logout() {
-
-    localStorage.removeItem("user");
-
-    window.location.href = "index.html";
-
-}
-
 </script>
+
+<!-- Profile icon after login -->
+<script type="module" src="navbar-auth.js"></script>
+
 </html>
