@@ -3,265 +3,756 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrekExplorer</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="TrekExplorer — India's premier trekking & mountain expedition portal featuring Sahyadri forts, Himalayan passes, ropeways, 4x4 shuttles, and live pickup tracking.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
+    <title>TrekExplorer | India's Premier Trekking & Mountain Adventure Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
-    <nav>
-
-    <div class="logo">
-        🏔 TrekExplorer
-    </div>
-
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#treks">Treks</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-
-    <div class="auth-buttons" id="authButtons">
-
-        <a href="login.html" class="login-btn">
-            Login
-        </a>
-
-        <a href="signup.html" class="signup-btn">
-            Sign Up
-        </a>
-
-    </div>
-
-</nav>
-
+    <div id="navbar"></div>
+    
     <div class="hero">
-        <h1>Explore Nature Like Never Before</h1>
-        <p>Discover India's Best Trekking Destinations, Forts & Mountains.</p>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>🇮🇳 Pan-India Expeditions • Sahyadris, Himalayas, Western Ghats & North-East</span>
+            </div>
+            <h1>Explore India Like Never Before</h1>
+            <p>From ancient Maratha hill forts & roaring Western Ghat waterfalls to high-altitude Himalayan snow summits & frozen Ladakh rivers.</p>
 
-        <a href="#treks" class="btn">Explore Treks</a>
+            <div class="hero-actions">
+                <a href="#treks" class="btn btn-primary">Explore All Treks <span>↓</span></a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+
+            <div class="hero-trust">
+                <div class="trust-item">
+                    <span class="trust-num">⭐ 4.9/5</span>
+                    <span class="trust-lbl">Trekker Rating</span>
+                </div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">
+                    <span class="trust-num">29+</span>
+                    <span class="trust-lbl">All-India Trails</span>
+                </div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">
+                    <span class="trust-num">6</span>
+                    <span class="trust-lbl">Major Regions</span>
+                </div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">
+                    <span class="trust-num">100%</span>
+                    <span class="trust-lbl">Safety Certified</span>
+                </div>
+            </div>
+        </div>
     </div>
-
 </header>
 
-
+<!-- ================= PAN-INDIA TREKS (SECTION-WISE) ================= -->
 <section class="treks" id="treks">
+    <div class="section-title-wrap">
+        <span class="section-tag">CURATED EXPEDITIONS</span>
+        <h2>India's Premier Trekking &amp; Assisted-Access Trails</h2>
+        <p class="section-sub">Every expedition—including India's most demanding high-altitude and cliff trails—pairs classic routes with verified Easy Way options such as aerial ropeways, 4x4 shuttles, gentle bypasses, and pack support.</p>
+    </div>
 
-<h2>Popular Trekking Destinations</h2>
+    <!-- Clean Expedition Metrics Bar -->
+    <div class="trek-kpi-strip">
+        <div class="trek-kpi">
+            <strong>29</strong>
+            <span>Curated Trails</span>
+        </div>
+        <div class="trek-kpi-div"></div>
+        <div class="trek-kpi">
+            <strong>6</strong>
+            <span>Mountain Regions</span>
+        </div>
+        <div class="trek-kpi-div"></div>
+        <div class="trek-kpi">
+            <strong>11</strong>
+            <span>Tough Treks w/ Easy Ways</span>
+        </div>
+        <div class="trek-kpi-div"></div>
+        <div class="trek-kpi">
+            <strong>4</strong>
+            <span>Ropeway &amp; Heli Routes</span>
+        </div>
+    </div>
 
-<div class="cards">
+    <!-- Tough Trek & Easy Way Spotlight -->
+    <div class="easy-way-spotlight">
+        <div class="spotlight-left">
+            <div class="spotlight-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+            </div>
+            <div class="spotlight-text">
+                <h3>Tough Treks Made Accessible</h3>
+                <p>Filter India's hardest forts and Himalayan passes paired with Aerial Ropeways, 4x4 trailhead shuttles, gentle village trails, and porter support.</p>
+            </div>
+        </div>
+        <div class="spotlight-actions">
+            <button type="button" class="spotlight-btn primary" data-quick-mode="tough">View Tough Treks + Easy Ways</button>
+            <button type="button" class="spotlight-btn" data-quick-mode="ropeway">Ropeway &amp; Cable Car Routes</button>
+        </div>
+    </div>
 
-<div class="card">
-<img src="img/kalsubai.jpeg">
-<h3>Kalsubai Peak</h3>
-<p>Maharashtra's Highest Peak with beautiful sunrise views.</p>
+    <!-- Search, Sort & Access Mode Toolbar -->
+    <div class="trek-toolbar">
+        <div class="trek-toolbar-top">
+            <div class="trek-search-box">
+                <span class="trek-search-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </span>
+                <input
+                    type="search"
+                    id="trekSearchInput"
+                    class="trek-search-input"
+                    placeholder="Search by trek name, region, difficulty, or access mode (e.g. Ropeway, Ladakh, Hard, Jeep)..."
+                >
+            </div>
+            <div class="trek-sort-wrap">
+                <label for="trekSortSelect" class="trek-sort-label">Sort by</label>
+                <select id="trekSortSelect" class="trek-sort-select">
+                    <option value="recommended">Recommended</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="height-desc">Altitude: Highest First</option>
+                    <option value="tough-first">Tough Treks First</option>
+                </select>
+            </div>
+        </div>
+        <div class="trek-mode-pills" id="modeFilterPills">
+            <button type="button" class="mode-pill-btn active" data-mode="all">All Expeditions</button>
+            <button type="button" class="mode-pill-btn tough-pill" data-mode="tough">Tough Treks (Easy Way)</button>
+            <button type="button" class="mode-pill-btn" data-mode="ropeway">Ropeway / Heli</button>
+            <button type="button" class="mode-pill-btn" data-mode="vehicle">4x4 / Jeep</button>
+            <button type="button" class="mode-pill-btn" data-mode="porter">Mules &amp; Porters</button>
+            <button type="button" class="mode-pill-btn" data-mode="trail">Gentle Trails</button>
+        </div>
+    </div>
 
+    <!-- Region Filter Tabs (dynamically updated from treks.js) -->
+    <div class="category-filter-wrap" id="regionFilterWrap"></div>
 
-<a href="trek-details.html?trek=kalsubai" class="view-btn">
+    <!-- Results Summary -->
+    <div class="trek-results-bar">
+        <span id="trekResultsCount">Loading expeditions...</span>
+        <button type="button" id="resetTrekFilters" class="trek-reset-btn" style="display:none;">↺ Reset All Filters</button>
+    </div>
 
-    View Details 
-
-</a>
-</div>
-
-<div class="card">
-<img src="img/rajgad.png">
-<h3>Rajgad Fort</h3>
-<p>Historic fort famous for Shivaji Maharaj and trekking trails.</p>
-<a href="trek-details.html?trek=rajgad" class="view-btn">
-
-    View Details 
-
-</a>
-
-</div>
-
-<div class="card">
-<img src="img/harishchandra.png">
-<h3>Harishchandragad</h3>
-<p>Konkan Kada cliff and camping experience.</p>
-<a href="trek-details.html?trek=harishchandragad" class="view-btn">
-
-    View Details 
-
-</a>
-</div>
-
-<div class="card">
-<img src="img/kokankada.png">
-<h3>KokanKada</h3>
-<p>Perfect monsoon trek with lush green surroundings.</p>
-<a href="trek-details.html?trek=kokankada" class="view-btn">
-
-    View Details 
-
-</a>
-</div>
-
-<div class="card">
-<img src="img/harihar.png">
-<h3>Harihar Fort</h3>
-<p>One of Maharashtra’s most adventurous trekking destinations, known for its iconic 80-degree rock-cut steps.</p>
-<a href="trek-details.html?trek=harihar" class="view-btn">
-
-    View Details 
-
-</a>
-</div>
-
-<div class="card">
-<img src="img/kaluwaterfall.png">
-<h3>Kalu Waterfall</h3>
-<p>In Malshej Ghat is famous for its magnificent waterfalls and peaceful natural surroundings.</p>
-<a href="trek-details.html?trek=kalu-waterfall" class="view-btn">
-
-    View Details 
-
-</a>
-</div>
-
-</div>
-
+    <!-- Dynamic Trek Groups Container -->
+    <div id="trekGroupsContainer"></div>
 </section>
 
-
-
+<!-- ================= ABOUT US ================= -->
 <section class="about" id="about">
+    <div class="about-container">
+        <div class="about-header">
+            <span class="section-tag">WHO WE ARE</span>
+            <h2>India's Most Trusted Outdoor Expedition Network</h2>
+           
+        </div>
 
-<h2>About Us</h2>
-
-<p>
-
-TrekExplorer helps adventure lovers discover the most beautiful trekking
-destinations, mountains, forts, camping locations, and travel guides.
-Whether you're a beginner or an experienced trekker, we provide everything
-needed for your next adventure.
-
-</p>
-
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">🛡️</div>
+                <h4>Certified Safety First</h4>
+                <p>Wilderness First Aid (WFR) certified leaders, satellite emergency links, oxygen cylinders, and medical protocols.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">🌿</div>
+                <h4>Leave No Trace</h4>
+                <p>Strict eco-friendly principles to preserve historic monuments, fragile alpine zones, and local biodiversity.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">🚌</div>
+                <h4>End-to-End Logistics</h4>
+                <p>Seamless pickups, certified mountain homestays, all-weather high-altitude tents, and nutritious local meals.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">👥</div>
+                <h4>Vibrant Community</h4>
+                <p>Join a community of 25,000+ friendly trekkers, solo adventurers, photographers, and nature lovers.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-
-
+<!-- ================= SERVICES ================= -->
 <section class="services" id="services">
+    <div class="section-title-wrap">
+        <span class="section-tag">OUR SERVICES</span>
+        <h2>Complete Adventure Services</h2>
 
-<h2>Our Services</h2>
+    </div>
 
-<div class="service-box">
+    <div class="service-box">
+        <div class="service-item">
+            <div class="service-icon">🏕️</div>
+            <h3>Camping & High-Altitude Gear</h3>
+            <p>Four-season alpine tents, sub-zero sleeping bags, crampons, microspikes, and cozy bonfire arrangements.</p>
+            <ul class="service-perks">
+                <li>✓ Sanitized down sleeping bags</li>
+                <li>✓ Nutritious hot trail meals</li>
+                <li>✓ Certified mountain guides</li>
+            </ul>
+        </div>
 
-<div>
-<h3>🏕 Camping Guide</h3>
-<p>Best camping locations and safety tips.</p>
-</div>
+        <div class="service-item">
+            <div class="service-icon">🥾</div>
+            <h3>Pan-India Trek Planning</h3>
+            <p>Detailed day-by-day itineraries, permit clearances (ILP, Forest Dept), emergency evacuation support, and gear advice.</p>
+            <ul class="service-perks">
+                <li>✓ All government permits included</li>
+                <li>✓ Comprehensive medical & oxygen kits</li>
+                <li>✓ Dedicated trek leaders</li>
+            </ul>
+        </div>
 
-<div>
-<h3>🥾 Trek Planning</h3>
-<p>Complete route planning with maps.</p>
-</div>
-
-<div>
-<h3>📍 GPS Locations</h3>
-<p>Find trekking routes easily.</p>
-</div>
-
-</div>
-
+        <div class="service-item">
+            <div class="service-icon">📍</div>
+            <h3>GPS, Maps & Transport</h3>
+            <p>Dedicated AC transport from major hubs (Mumbai, Pune, Dehradun, Leh, Bangalore), live vehicle tracking, and offline GPS trails.</p>
+            <ul class="service-perks">
+                <li>✓ Live pickup tracking</li>
+                <li>✓ Hub-to-base camp transport</li>
+                <li>✓ Offline trail maps</li>
+            </ul>
+        </div>
+    </div>
 </section>
-
-
-
+<!-- ================= CONTACT ================= -->
 <section class="contact" id="contact">
+    <div class="contact-wrap">
+        <div class="contact-info-col">
+            <span class="section-tag">GET IN TOUCH</span>
+            <h2>Let's Plan Your Next Adventure</h2>
+            <p>Have questions about upcoming weekend Sahyadri treks, Himalayan seasonal batches, or custom corporate groups? Reach out to our team anytime.</p>
+            
+            <div class="contact-cards">
+                <div class="c-card">
+                    <span class="c-icon">📍</span>
+                    <div>
+                        <strong>Operations Hubs</strong>
+                        <p>Pune, Mumbai, Dehradun, Manali & Leh</p>
+                    </div>
+                </div>
+                <div class="c-card">
+                    <span class="c-icon">📞</span>
+                    <div>
+                        <strong>Phone / WhatsApp</strong>
+                        <p>+91 98765 43210</p>
+                    </div>
+                </div>
+                <div class="c-card">
+                    <span class="c-icon">✉️</span>
+                    <div>
+                        <strong>Email Support</strong>
+                        <p>support@trekexplorer.com</p>
+                    </div>
+                </div>
+                <div class="c-card">
+                    <span class="c-icon">🕒</span>
+                    <div>
+                        <strong>Support Hours</strong>
+                        <p>Mon - Sun: 8:00 AM – 9:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<h2>Contact Us</h2>
+        <div class="contact-form-col">
+            <form id="contactForm">
+                <h3>Send Us a Message</h3>
+                <p class="form-desc">Our expedition managers usually respond within 2 hours.</p>
 
-<form id="contactForm">
-<input type="text" id="name" placeholder="Enter your full name" required>
+                <div class="c-field">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
 
-<input type="email" id="email" placeholder="Enter your email address" required>
+                <div class="c-field">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email address" required>
+                </div>
 
-<textarea id="message" placeholder="Write your message here" required></textarea>
+                <div class="c-field">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" placeholder="Ask about routes, dates, group packages..." required></textarea>
+                </div>
 
-    <button type="submit">Send Message</button>
+                <button type="submit" class="contact-submit-btn">
+                    <span>Send Message</span>
+                    <span class="btn-arrow">→</span>
+                </button>
 
-    <p id="formStatus"></p>
-</form>
-
+                <p id="formStatus"></p>
+            </form>
+        </div>
+    </div>
 </section>
 
-<footer>
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+    <div class="footer-top">
+        <div class="footer-col brand-col">
+            <div class="footer-logo">
+                <span class="footer-logo-icon">🏔️</span>
+                <span class="footer-logo-text">TrekExplorer</span>
+            </div>
+            <p class="footer-bio">
+                Inspiring and guiding adventurers across India's magnificent Western Ghats, Uttarakhand Himalayas, Himachal valleys, high-altitude Ladakh trails, and mystical North-East with certified safety.
+            </p>
+            <div class="footer-badges">
+                <span class="f-badge">🌲 Leave No Trace</span>
+                <span class="f-badge">🛡️ Certified Leaders</span>
+                <span class="f-badge">❄️ High Altitude Ready</span>
+            </div>
+        </div>
 
-<p>© 2026 TrekExplorer | Made with ❤️</p>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#treks">All Expeditions</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="my-bookings.html">My Bookings</a></li>
+            </ul>
+        </div>
 
+        <div class="footer-col">
+            <h4>Popular Treks</h4>
+            <ul>
+                <li><a href="trek-details.html?trek=kalsubai">Kalsubai Peak (MH)</a></li>
+                <li><a href="trek-details.html?trek=kedarkantha">Kedarkantha Snow (UK)</a></li>
+                <li><a href="trek-details.html?trek=kashmir-great-lakes">Kashmir Great Lakes (J&K)</a></li>
+                <li><a href="trek-details.html?trek=chadar-trek">Chadar Frozen River (Ladakh)</a></li>
+                <li><a href="trek-details.html?trek=kudremukh">Kudremukh Peak (Karnataka)</a></li>
+                <li><a href="trek-details.html?trek=goechala">Goechala Kanchenjunga (Sikkim)</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Safety & Policy</h4>
+            <ul>
+                <li><a href="#" data-policy="prep">Trek Preparation Guide</a></li>
+                <li><a href="#" data-policy="packing">High-Altitude Packing Checklist</a></li>
+                <li><a href="#" data-policy="refund">Cancellation & Refund Policy</a></li>
+                <li><a href="#" data-policy="terms">Terms & Conditions</a></li>
+                <li><a href="admin-login.html">Admin Portal</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 TrekExplorer. All rights reserved. • Made with ❤️ by Vaishnavi</p>
+    </div>
 </footer>
 
-</body>
+<!-- Policy & Guide Modal -->
+<div class="policy-modal-backdrop" id="policyModal" role="dialog" aria-modal="true" aria-labelledby="policyModalTitle">
+    <div class="policy-modal">
+        <div class="policy-modal-head">
+            <h3 id="policyModalTitle">Guide</h3>
+            <button type="button" class="policy-close-btn" id="policyModalClose" aria-label="Close">✕</button>
+        </div>
+        <div class="policy-modal-body" id="policyModalBody"></div>
+    </div>
+</div>
 
-<!-- Contact form -->
+<!-- Back to Top Button -->
+<button type="button" class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">↑</button>
+
+<!-- Dynamic Trek Catalog & Smart Filter Script -->
 <script type="module">
+import { TREK_CATEGORIES, TREKS } from "./js/treks.js";
 
-document.getElementById("contactForm").addEventListener("submit", async function (event) {
+const allTreks = Object.values(TREKS);
+const state = {
+    region: "all",
+    mode: "all",
+    sort: "recommended",
+    query: ""
+};
 
-    event.preventDefault();
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-    const status = document.getElementById("formStatus");
+const regionWrap = document.getElementById("regionFilterWrap");
+const groupsContainer = document.getElementById("trekGroupsContainer");
+const resultsCountEl = document.getElementById("trekResultsCount");
+const resetBtn = document.getElementById("resetTrekFilters");
+const searchInput = document.getElementById("trekSearchInput");
+const sortSelect = document.getElementById("trekSortSelect");
+const modeBtns = document.querySelectorAll("#modeFilterPills .mode-pill-btn");
+const spotlightBtns = document.querySelectorAll("[data-quick-mode]");
 
-    const contactData = {
+function parseHeight(h) {
+    const num = Number(String(h || "").replace(/[^0-9]/g, ""));
+    return Number.isFinite(num) ? num : 0;
+}
 
-        name: document.getElementById("name").value,
+function sortTreks(list) {
+    const copy = [...list];
+    switch (state.sort) {
+        case "price-asc":
+            return copy.sort((a, b) => a.price - b.price);
+        case "price-desc":
+            return copy.sort((a, b) => b.price - a.price);
+        case "height-desc":
+            return copy.sort((a, b) => parseHeight(b.height) - parseHeight(a.height));
+        case "tough-first":
+            return copy.sort((a, b) => Number(b.isTough) - Number(a.isTough));
+        default:
+            return copy;
+    }
+}
 
-        email: document.getElementById("email").value,
+function matchesMode(trek, mode) {
+    if (mode === "all") return true;
+    if (mode === "tough") return Boolean(trek.isTough);
+    return trek.easyRoute?.mode === mode;
+}
 
-        message: document.getElementById("message").value
+function matchesSearch(trek, q) {
+    if (!q) return true;
+    const haystack = [
+        trek.name,
+        trek.location,
+        trek.region,
+        trek.difficulty,
+        trek.tag,
+        trek.shortDesc,
+        trek.easyRoute?.type,
+        trek.easyRoute?.title,
+        trek.easyRoute?.description,
+        trek.easyRoute?.badge
+    ].join(" ").toLowerCase();
+    return haystack.includes(q);
+}
 
-    };
+function renderRegionTabs() {
+    const modeAndSearchFiltered = allTreks.filter(
+        (t) => matchesMode(t, state.mode) && matchesSearch(t, state.query)
+    );
 
-    try {
+    const tabs = [
+        { id: "all", icon: "🌐", label: "All India", count: modeAndSearchFiltered.length },
+        ...TREK_CATEGORIES.map((cat) => ({
+            id: cat.id,
+            icon: cat.icon,
+            label: cat.label,
+            count: modeAndSearchFiltered.filter((t) => t.category === cat.id).length
+        }))
+    ];
 
-        const response = await fetch("http://localhost:8080/api/contact", {
+    regionWrap.innerHTML = tabs.map((tab) => `
+        <button type="button" class="cat-tab-btn ${state.region === tab.id ? "active" : ""}" data-filter="${tab.id}">
+            <span>${tab.icon} ${esc(tab.label)}</span>
+            <span class="tab-count">${tab.count}</span>
+        </button>
+    `).join("");
 
-            method: "POST",
-
-            headers: {
-
-                "Content-Type": "application/json"
-
-            },
-
-            body: JSON.stringify(contactData)
-
+    regionWrap.querySelectorAll(".cat-tab-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            state.region = btn.dataset.filter;
+            renderAll();
         });
+    });
+}
 
-        const result = await response.json();
+function renderCard(trek) {
+    const tierClass = `tier-${trek.difficultyTier || "moderate"}`;
+    const easy = trek.easyRoute;
+    const easyLabel = trek.isTough ? "TOUGH TREK · EASY WAY" : "ASSISTED ACCESS";
 
-        if (!response.ok) {
+    return `
+        <article class="card">
+            <div class="card-img-wrap">
+                <img
+                    src="${esc(trek.image)}"
+                    alt="${esc(trek.name)}"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='img/kaluwaterfall.png';"
+                >
+                <span class="card-tag">${esc(trek.tag)}</span>
+                <span class="card-difficulty ${tierClass}">${esc(trek.difficulty)}</span>
+                <div class="card-img-bottom">
+                    <span class="card-pin">
+                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        ${esc(trek.shortLocation)}
+                    </span>
+                    <span class="card-alt">${esc(trek.height)}</span>
+                </div>
+            </div>
 
-            throw new Error("Message could not be sent.");
+            <div class="card-body">
+                <h3>${esc(trek.name)}</h3>
+                <p class="card-desc">${esc(trek.shortDesc)}</p>
 
-        }
+                <div class="card-specs">
+                    <div class="spec-cell">
+                        <span>Duration</span>
+                        <strong>${esc(trek.shortDuration)}</strong>
+                    </div>
+                    <div class="spec-cell">
+                        <span>Distance</span>
+                        <strong>${esc(trek.distance.replace("Approx. ", ""))}</strong>
+                    </div>
+                    <div class="spec-cell">
+                        <span>Season</span>
+                        <strong>${esc(trek.season.split("(")[0].trim())}</strong>
+                    </div>
+                </div>
 
-        status.textContent = result.message;
+                ${easy ? `
+                <div class="easy-way-box ${trek.isTough ? "tough-easy" : ""}">
+                    <div class="easy-way-head">
+                        <span class="easy-way-label">${easyLabel}</span>
+                        <span class="easy-way-pill">${esc(easy.type)}</span>
+                    </div>
+                    <div class="easy-way-title">${esc(easy.title)}</div>
+                    <div class="easy-way-meta">${esc(easy.timeSaved)} &middot; ${esc(easy.approxCost)}</div>
+                </div>` : ""}
 
-        status.style.color = "green";
+                <div class="card-footer">
+                    <div class="price-box">
+                        <span class="price-lbl">Starting From</span>
+                        <div>
+                            <span class="price-val">₹${Number(trek.price).toLocaleString("en-IN")}</span>
+                            <span class="price-unit">/ person</span>
+                        </div>
+                    </div>
+                    <a href="trek-details.html?trek=${encodeURIComponent(trek.id)}" class="view-btn">
+                        Explore Trek <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+    `;
+}
 
-        document.getElementById("contactForm").reset();
+function renderGroups() {
+    const visible = allTreks.filter(
+        (t) =>
+            (state.region === "all" || t.category === state.region) &&
+            matchesMode(t, state.mode) &&
+            matchesSearch(t, state.query)
+    );
 
-    } catch (error) {
+    const hasFilters = state.region !== "all" || state.mode !== "all" || state.sort !== "recommended" || state.query !== "";
+    resultsCountEl.textContent = `Showing ${visible.length} of ${allTreks.length} curated expeditions`;
+    resetBtn.style.display = hasFilters ? "inline-flex" : "none";
 
-        status.textContent =
-
-            "Message could not be sent. Check that Java is running.";
-
-        status.style.color = "red";
-
+    if (!visible.length) {
+        groupsContainer.innerHTML = `
+            <div class="trek-empty-state">
+                <div style="font-size:40px;">🧭</div>
+                <h3>No matching treks found</h3>
+                <p>Try clearing your search or switching to All Levels / All India.</p>
+                <button type="button" class="trek-reset-btn" id="emptyResetBtn">↺ Reset All Filters</button>
+            </div>
+        `;
+        document.getElementById("emptyResetBtn").addEventListener("click", resetFilters);
+        return;
     }
 
+    const items = sortTreks(visible);
+
+    groupsContainer.innerHTML = `
+        <div class="cards">
+            ${items.map(renderCard).join("")}
+        </div>
+    `;
+}
+
+function syncModeButtons() {
+    modeBtns.forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.mode === state.mode);
+    });
+}
+
+function resetFilters() {
+    state.region = "all";
+    state.mode = "all";
+    state.sort = "recommended";
+    state.query = "";
+    searchInput.value = "";
+    sortSelect.value = "recommended";
+    syncModeButtons();
+    renderAll();
+}
+
+function renderAll() {
+    renderRegionTabs();
+    renderGroups();
+}
+
+modeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        state.mode = btn.dataset.mode;
+        syncModeButtons();
+        renderAll();
+    });
 });
 
+spotlightBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        state.mode = btn.dataset.quickMode;
+        state.region = "all";
+        syncModeButtons();
+        renderAll();
+        document.getElementById("trekResultsCount").scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+});
+
+searchInput.addEventListener("input", (e) => {
+    state.query = e.target.value.trim().toLowerCase();
+    renderAll();
+});
+
+sortSelect.addEventListener("change", (e) => {
+    state.sort = e.target.value;
+    renderAll();
+});
+
+resetBtn.addEventListener("click", resetFilters);
+
+renderAll();
+
+// Policy & Guide Modal + Back to Top
+const POLICY_DOCS = {
+    prep: {
+        title: "🏃 Trek Preparation Guide",
+        html: `
+            <p>Preparing 3–4 weeks ahead makes every Sahyadri or Himalayan trek dramatically safer and more enjoyable:</p>
+            <ul>
+                <li><strong>Cardio Conditioning:</strong> Brisk walk or jog 4–5 km in under 35 minutes, 4 days a week.</li>
+                <li><strong>Strength &amp; Knees:</strong> Practice stair climbing, squats, and lunges for steep fort steps.</li>
+                <li><strong>Footwear Break-In:</strong> Wear your trekking shoes on short walks beforehand to prevent blisters.</li>
+                <li><strong>Easy Way Option:</strong> Travelling with seniors or kids? Choose our Ropeway, 4x4 Shuttle, or Gentle Bypass routes on the trek details page.</li>
+            </ul>`
+    },
+    packing: {
+        title: "🎒 High-Altitude Packing Checklist",
+        html: `
+            <p>Pack light and smart using a 3-layer clothing system:</p>
+            <ul>
+                <li><strong>Footwear:</strong> High-ankle waterproof trekking boots with deep lugs + 2 pairs wool/synthetic socks.</li>
+                <li><strong>Clothing Layers:</strong> Quick-dry thermal base, warm fleece mid-layer, and windproof/down outer jacket.</li>
+                <li><strong>Essentials:</strong> 2L insulated water bottle, UV-400 sunglasses, SPF 50+ sunscreen, headlamp, and blister tape.</li>
+                <li><strong>Documents:</strong> Original Government Photo ID (mandatory for Ladakh, Sikkim &amp; Kashmir checkpoints).</li>
+            </ul>`
+    },
+    refund: {
+        title: "💳 Cancellation & Refund Policy",
+        html: `
+            <p>Flexible rescheduling and transparent refunds across all TrekExplorer batches:</p>
+            <ul>
+                <li><strong>15+ Days Before Departure:</strong> 90% refund or 100% free batch transfer credit.</li>
+                <li><strong>7–14 Days Before Departure:</strong> 50% refund or 75% credit voucher valid for 12 months.</li>
+                <li><strong>Under 7 Days:</strong> Non-refundable due to pre-booked forest permits, vehicles, and camps.</li>
+                <li><strong>Weather Closures:</strong> If ropeways, passes, or trails close due to extreme weather, you receive full trek credit.</li>
+            </ul>`
+    },
+    terms: {
+        title: "📜 Terms & Safety Conditions",
+        html: `
+            <p>By booking an expedition with TrekExplorer, participants agree to:</p>
+            <ul>
+                <li>Follow the instructions of certified Trek Leaders regarding pace, weather turnarounds, and safety ropes.</li>
+                <li>Disclose any pre-existing respiratory, cardiac, or knee conditions before high-altitude treks.</li>
+                <li>Strictly follow Leave No Trace rules—carry back all non-biodegradable waste.</li>
+                <li>Alcohol and smoking are strictly prohibited on trails and inside camp premises.</li>
+            </ul>`
+    }
+};
+
+const policyModal = document.getElementById("policyModal");
+const policyTitle = document.getElementById("policyModalTitle");
+const policyBody = document.getElementById("policyModalBody");
+
+document.querySelectorAll("[data-policy]").forEach((link) => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const doc = POLICY_DOCS[link.dataset.policy];
+        if (!doc) return;
+        policyTitle.textContent = doc.title;
+        policyBody.innerHTML = doc.html;
+        policyModal.classList.add("open");
+    });
+});
+
+document.getElementById("policyModalClose").addEventListener("click", () => {
+    policyModal.classList.remove("open");
+});
+
+policyModal.addEventListener("click", (e) => {
+    if (e.target === policyModal) policyModal.classList.remove("open");
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") policyModal.classList.remove("open");
+});
+
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+window.addEventListener("scroll", () => {
+    scrollTopBtn.classList.toggle("visible", window.scrollY > 500);
+});
+scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
 </script>
 
-<!-- Profile icon after login -->
-<script type="module" src="navbar-auth.js"></script>
+<!-- Profile icon after login & dynamic navbar -->
+<script type="module" src="js/navbar-auth.js"></script>
 
+<!-- Contact form submission -->
+<script type="module">
+import { db } from "./js/firebase.js";
+import { collection, addDoc, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const form = document.getElementById("contactForm");
+const status = document.getElementById("formStatus");
+
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const button = form.querySelector("button[type='submit']");
+    button.disabled = true;
+    status.textContent = "Sending...";
+    status.style.color = "#555";
+
+    try {
+        await addDoc(collection(db, "contactMessages"), {
+            name: document.getElementById("name").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            message: document.getElementById("message").value.trim(),
+            createdAt: serverTimestamp()
+        });
+
+        status.textContent = "Thank you! Your message has been sent.";
+        status.style.color = "green";
+        form.reset();
+    } catch (error) {
+        console.error(error);
+        status.textContent = "Message could not be sent. Please try again.";
+        status.style.color = "red";
+    } finally {
+        button.disabled = false;
+    }
+});
+</script>
+
+</body>
 </html>

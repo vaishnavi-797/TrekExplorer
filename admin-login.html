@@ -1,219 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login | TrekExplorer</title>
 
-    <title>Admin Login | TrekExplorer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  body {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+      linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+      url("img/kaluwaterfall.png") center / cover,
+      #1f3d2b;
+  }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
+  .login-box {
+    width: 100%; max-width: 440px; background: #fff; border-radius: 22px; padding: 46px 42px;
+    text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,.3);
+  }
 
-            min-height: 100vh;
+  .icon { font-size: 50px; margin-bottom: 8px; }
+  h1 { color: #2E8B57; font-size: 30px; margin-bottom: 6px; }
+  .sub { color: #777; margin-bottom: 30px; }
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+  .field { text-align: left; margin-bottom: 20px; }
+  .field label { display: block; font-weight: bold; margin-bottom: 8px; color: #333; }
+  .pw-wrap { position: relative; }
+  .pw-wrap input {
+    width: 100%; height: 50px; padding: 0 52px 0 16px; border: 1px solid #ccc; border-radius: 10px;
+    font-size: 16px; outline: none; transition: .2s;
+  }
+  .pw-wrap input:focus { border-color: #2E8B57; box-shadow: 0 0 0 3px rgba(46,139,87,.12); }
+  .toggle {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; font-size: 20px; padding: 6px 10px;
+  }
 
-            background:
-                linear-gradient(
-                    rgba(0, 0, 0, 0.55),
-                    rgba(0, 0, 0, 0.55)
-                ),
-                url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b");
+  .login-btn {
+    width: 100%; height: 52px; border: none; border-radius: 10px; background: #2E8B57; color: #fff;
+    font-size: 17px; font-weight: bold; cursor: pointer; transition: .25s;
+  }
+  .login-btn:hover { background: #247447; box-shadow: 0 8px 18px rgba(46,139,87,.25); }
+  .login-btn:disabled { opacity: .7; cursor: default; box-shadow: none; }
 
-            background-size: cover;
-            background-position: center;
-        }
+  #message { min-height: 22px; margin-top: 16px; font-weight: bold; font-size: 15px; }
+  .back { display: inline-block; margin-top: 18px; color: #555; text-decoration: none; font-size: 15px; }
+  .back:hover { color: #2E8B57; }
 
-        .login-box {
-            width: 400px;
-            background: white;
-
-            padding: 40px;
-
-            border-radius: 18px;
-
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-        }
-
-        .logo {
-            text-align: center;
-            font-size: 45px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #2e8b57;
-            margin: 10px 0;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #777;
-            margin-bottom: 30px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 7px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 13px;
-
-            margin-bottom: 20px;
-
-            border: 1px solid #ccc;
-            border-radius: 8px;
-
-            font-size: 15px;
-        }
-
-        button {
-            width: 100%;
-            padding: 14px;
-
-            border: none;
-            border-radius: 8px;
-
-            background: #2e8b57;
-            color: white;
-
-            font-size: 16px;
-            font-weight: bold;
-
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #247447;
-        }
-
-        #error {
-            text-align: center;
-            color: red;
-            margin-top: 15px;
-        }
-
-        .back {
-            display: block;
-
-            text-align: center;
-
-            margin-top: 20px;
-
-            color: #555;
-
-            text-decoration: none;
-        }
-    </style>
-
+  @media (max-width: 480px) { .login-box { padding: 36px 24px; } }
+</style>
 </head>
 
 <body>
 
 <div class="login-box">
+  <div class="icon">🏔️</div>
+  <h1>Admin Login</h1>
+  <p class="sub">Enter the admin password to open the dashboard</p>
 
-    <div class="logo">
-        🏔️
+  <form id="adminForm">
+    <div class="field">
+      <label for="password">Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="password" placeholder="Enter admin password" required autofocus>
+        <button type="button" class="toggle" id="toggle" aria-label="Show or hide password">👁️</button>
+      </div>
     </div>
 
-    <h1>Admin Login</h1>
+    <button type="submit" class="login-btn" id="loginBtn">Login</button>
+  </form>
 
-    <p class="subtitle">
-        TrekExplorer Administration
-    </p>
+  <p id="message"></p>
 
-    <form id="adminLoginForm">
-
-        <label for="username">
-            Username
-        </label>
-
-        <input
-            type="text"
-            id="username"
-            placeholder="Enter admin username"
-            required
-        >
-
-        <label for="password">
-            Password
-        </label>
-
-        <input
-            type="password"
-            id="password"
-            placeholder="Enter admin password"
-            required
-        >
-
-        <button type="submit">
-            Login
-        </button>
-
-    </form>
-
-    <p id="error"></p>
-
-    <a href="index.html" class="back">
-        ← Back to Home
-    </a>
-
+  <a href="index.html" class="back">← Back to Home</a>
 </div>
 
+<script type="module">
+import { auth } from "./js/firebase.js";
+import { signInWithEmailAndPassword, onAuthStateChanged }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-<script>
+// The admin's login email (not a secret). The password is stored in Firebase, not in this file.
+// Must be the same email you create in Firebase Console and use in admin.html and the Firestore rules.
+const ADMIN_EMAIL = "admin@trekexplorer.com";
 
-document
-    .getElementById("adminLoginForm")
-    .addEventListener("submit", function(event) {
+const form = document.getElementById("adminForm");
+const passwordInput = document.getElementById("password");
+const message = document.getElementById("message");
+const loginBtn = document.getElementById("loginBtn");
 
-        event.preventDefault();
+document.getElementById("toggle").addEventListener("click", () => {
+  passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+});
 
-        const username =
-            document.getElementById("username").value;
+// Already logged in as admin? Go straight to the dashboard.
+onAuthStateChanged(auth, (user) => {
+  if (user && user.email && user.email.toLowerCase() === ADMIN_EMAIL) {
+    window.location.replace("admin.html");
+  }
+});
 
-        const password =
-            document.getElementById("password").value;
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  message.textContent = "";
 
+  loginBtn.disabled = true;
+  loginBtn.textContent = "Checking...";
 
-        // ADMIN CREDENTIALS
+  try {
+    await signInWithEmailAndPassword(auth, ADMIN_EMAIL, passwordInput.value);
 
-        if (
-            username === "admin" &&
-            password === "admin123"
-        ) {
+    message.style.color = "#2E8B57";
+    message.textContent = "✅ Login successful! Opening dashboard...";
+    setTimeout(() => { window.location.href = "admin.html"; }, 700);
 
-            localStorage.setItem(
-                "adminLoggedIn",
-                "true"
-            );
+  } catch (error) {
+    loginBtn.disabled = false;
+    loginBtn.textContent = "Login";
+    message.style.color = "#dc3545";
 
-            window.location.href =
-                "admin.html";
-
-        } else {
-
-            document.getElementById("error").textContent =
-                "❌ Invalid username or password.";
-
-        }
-
-    });
-
+    if (error.code === "auth/invalid-credential" || error.code === "auth/wrong-password") {
+      message.textContent = "Incorrect password. Please try again.";
+    } else if (error.code === "auth/user-not-found") {
+      message.textContent = "Admin account not created yet. Add it in Firebase Console.";
+    } else if (error.code === "auth/too-many-requests") {
+      message.textContent = "Too many attempts. Please wait a bit and try again.";
+    } else if (error.code === "auth/network-request-failed") {
+      message.textContent = "Network error. Check your internet connection.";
+    } else {
+      message.textContent = error.message;
+    }
+    passwordInput.select();
+  }
+});
 </script>
 
 </body>
-
 </html>

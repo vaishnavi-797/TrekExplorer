@@ -2,20 +2,17 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Book Trek | TrekExplorer</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-
         /* =========================================
            GLOBAL RESET
            ========================================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -23,9 +20,13 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7f5;
-            color: #333;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
         }
 
 
@@ -561,43 +562,7 @@
     <!-- =========================================
          NAVBAR
          ========================================= -->
-
-    <nav>
-
-        <div class="logo">
-            🏔️ TrekExplorer
-        </div>
-
-
-        <ul>
-
-            <li>
-                <a href="index.html">
-                    Home
-                </a>
-            </li>
-
-            <li>
-                <a href="index.html#about">
-                    About
-                </a>
-            </li>
-
-            <li>
-                <a href="index.html#services">
-                    Services
-                </a>
-            </li>
-
-            <li>
-                <a href="index.html#contact">
-                    Contact
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
+         <div id="navbar"></div>
 
 
 
@@ -605,24 +570,6 @@
          PAGE HEADER
          ========================================= -->
 
-    <section
-        class="page-header"
-        id="pageHeader"
-    >
-
-        <div>
-
-            <h1 id="pageTitle">
-                Book Your Trek
-            </h1>
-
-            <p id="pageSubtitle">
-                Your next adventure starts here 🏔️
-            </p>
-
-        </div>
-
-    </section>
 
 
 
@@ -737,6 +684,20 @@
 
                         <span id="trekStartingPoint">
                             Bari Village
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        🚡
+                        <strong>
+                            Route Option:
+                        </strong>
+
+                        <span id="trekRoutePreference">
+                            Standard Trekking Route
                         </span>
 
                     </p>
@@ -884,77 +845,93 @@
 
 
 
-                <!-- NUMBER OF PEOPLE -->
+                <!-- NUMBER OF PEOPLE + PICKUP HUB -->
 
-                <div class="form-group">
+                <div class="form-row">
 
-                    <label for="people">
-                        Number of People
-                    </label>
+                    <div class="form-group">
+
+                        <label for="people">
+                            Number of People
+                        </label>
 
 
-                    <select
-                        id="people"
-                        required
-                    >
+                        <select
+                            id="people"
+                            required
+                        >
 
-                        <option value="">
-                            Select number of people
-                        </option>
+                            <option value="">
+                                Select number of people
+                            </option>
 
-                        <option value="1">
-                            1 Person
-                        </option>
+                            <option value="1">
+                                1 Person
+                            </option>
 
-                        <option value="2">
-                            2 People
-                        </option>
+                            <option value="2">
+                                2 People
+                            </option>
 
-                        <option value="3">
-                            3 People
-                        </option>
+                            <option value="3">
+                                3 People
+                            </option>
 
-                        <option value="4">
-                            4 People
-                        </option>
+                            <option value="4">
+                                4 People
+                            </option>
 
-                        <option value="5">
-                            5 People
-                        </option>
+                            <option value="5">
+                                5 People
+                            </option>
 
-                        <option value="6">
-                            6 People
-                        </option>
+                            <option value="6">
+                                6 People
+                            </option>
 
-                        <option value="7">
-                            7 People
-                        </option>
+                            <option value="7">
+                                7 People
+                            </option>
 
-                        <option value="8">
-                            8 People
-                        </option>
+                            <option value="8">
+                                8 People
+                            </option>
 
-                        <option value="9">
-                            9 People
-                        </option>
+                            <option value="9">
+                                9 People
+                            </option>
 
-                        <option value="10">
-                            10 People
-                        </option>
+                            <option value="10">
+                                10 People
+                            </option>
 
-                    </select>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pickupHub">Boarding / Pickup Hub</label>
+                        <select id="pickupHub" required>
+                            <option value="Base Village Direct">Base Village Direct</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Dehradun">Dehradun</option>
+                            <option value="Manali">Manali</option>
+                            <option value="Leh">Leh</option>
+                            <option value="Bangalore">Bangalore</option>
+                        </select>
+                    </div>
 
                 </div>
-
-
 
                 <!-- TOTAL -->
 
                 <div class="total-box">
 
-                    <span>
-                        Total Amount
-                    </span>
+                    <div>
+                        <span>Total Amount</span>
+                        <div id="priceBreakdown" style="font-size:12.5px;color:#64748b;margin-top:2px;">Select number of travellers</div>
+                    </div>
 
                     <span id="totalAmount">
                         ₹0
@@ -996,348 +973,169 @@
 
     </section>
 
-
-
-    <!-- =========================================
-         FOOTER
-         ========================================= -->
-
-    <footer>
-
-        <p>
-            © 2026 TrekExplorer. All Rights Reserved.
-        </p>
-
-    </footer>
-
-
-
     <!-- =========================================
          JAVASCRIPT
          ========================================= -->
-
-    <script>
-
-
-        /* =========================================
-           GET TREK DATA FROM LOCAL STORAGE
-        ========================================= */
-
-        const selectedTrek =
-            localStorage.getItem("selectedTrek");
-
-
-        const trekPrice =
-            Number(
-                localStorage.getItem("trekPrice")
-            ) || 999;
-
-
-        const trekImage =
-            localStorage.getItem("trekImage")
-            || "img/kalsubai.jpeg";
-
-
-        const trekLocation =
-            localStorage.getItem("trekLocation")
-            || "Ahmednagar, Maharashtra";
-
-
-        const trekDifficulty =
-            localStorage.getItem("trekDifficulty")
-            || "Moderate";
-
-
-        const trekDistance =
-            localStorage.getItem("trekDistance")
-            || "Approx. 6.5 KM";
-
-
-        const trekDuration =
-            localStorage.getItem("trekDuration")
-            || "5–6 Hours";
-
-
-        const trekHeight =
-            localStorage.getItem("trekHeight")
-            || "5,400 ft";
-
-
-        const trekStartingPoint =
-            localStorage.getItem("trekStartingPoint")
-            || "Bari Village";
-
-
-
-        /* =========================================
-           DISPLAY TREK INFORMATION
-        ========================================= */
-
-
-        document.getElementById(
-            "trekName"
-        ).textContent =
-            selectedTrek || "Kalsubai Trek";
-
-
-        document.getElementById(
-            "bookingTrekName"
-        ).textContent =
-            selectedTrek || "Kalsubai Trek";
-
-
-        document.getElementById(
-            "trekImage"
-        ).src =
-            trekImage;
-
-
-        document.getElementById(
-            "trekImage"
-        ).alt =
-            selectedTrek || "Trek Image";
-
-
-        document.getElementById(
-            "trekLocation"
-        ).textContent =
-            trekLocation;
-
-
-        document.getElementById(
-            "trekDifficulty"
-        ).textContent =
-            trekDifficulty;
-
-
-        document.getElementById(
-            "trekDistance"
-        ).textContent =
-            trekDistance;
-
-
-        document.getElementById(
-            "trekDuration"
-        ).textContent =
-            trekDuration;
-
-
-        document.getElementById(
-            "trekHeight"
-        ).textContent =
-            trekHeight;
-
-
-        document.getElementById(
-            "trekStartingPoint"
-        ).textContent =
-            trekStartingPoint;
-
-
-        document.getElementById(
-            "trekPrice"
-        ).textContent =
-            "₹" + trekPrice.toLocaleString("en-IN");
-
-
-
-        /* =========================================
-           CHANGE PAGE HEADER IMAGE
-        ========================================= */
-
-        document.getElementById(
-            "pageHeader"
-        ).style.backgroundImage =
-
-            `
-            linear-gradient(
-                rgba(0, 0, 0, 0.55),
-                rgba(0, 0, 0, 0.55)
-            ),
-            url("${trekImage}")
-            `;
-
-
-
-        /* =========================================
-           PAGE TITLE
-        ========================================= */
-
-        document.title =
-            (selectedTrek || "Book Trek")
-            + " | TrekExplorer";
-
-
-
-        /* =========================================
-           SET MINIMUM TREK DATE
-        ========================================= */
-
-        const today =
-            new Date()
-                .toISOString()
-                .split("T")[0];
-
-
-        document.getElementById(
-            "trekDate"
-        ).setAttribute(
-            "min",
-            today
-        );
-
-
-
-        /* =========================================
-           CALCULATE TOTAL PRICE
-        ========================================= */
-
-        const peopleSelect =
-            document.getElementById(
-                "people"
-            );
-
-
-        const totalAmount =
-            document.getElementById(
-                "totalAmount"
-            );
-
-
-        peopleSelect.addEventListener(
-            "change",
-            function () {
-
-                const people =
-                    Number(this.value);
-
-
-                const total =
-                    people * trekPrice;
-
-
-                totalAmount.textContent =
-                    "₹" +
-                    total.toLocaleString("en-IN");
-
-            }
-        );
-
-
-
-        /* =========================================
-           BOOKING FORM
-        ========================================= */
-
-        document.getElementById(
-            "bookingForm"
-        ).addEventListener(
-            "submit",
-            function (event) {
-
-                event.preventDefault();
-
-
-                const name =
-                    document.getElementById(
-                        "name"
-                    ).value;
-
-
-                const email =
-                    document.getElementById(
-                        "email"
-                    ).value;
-
-
-                const phone =
-                    document.getElementById(
-                        "phone"
-                    ).value;
-
-
-                const trekDate =
-                    document.getElementById(
-                        "trekDate"
-                    ).value;
-
-
-                const people =
-                    document.getElementById(
-                        "people"
-                    ).value;
-
-
-                const total =
-                    Number(people) *
-                    trekPrice;
-
-
-
-                /* PHONE VALIDATION */
-
-                if (phone.length !== 10) {
-
-                    document.getElementById(
-                        "bookingMessage"
-                    ).style.color = "red";
-
-
-                    document.getElementById(
-                        "bookingMessage"
-                    ).textContent =
-                        "❌ Please enter a valid 10-digit phone number.";
-
-                    return;
-
-                }
-
-
-
-                /* SUCCESS MESSAGE */
-
-                document.getElementById(
-                    "bookingMessage"
-                ).style.color =
-                    "#2E8B57";
-
-
-                document.getElementById(
-                    "bookingMessage"
-                ).textContent =
-
-                    "✅ Booking for " +
-                    (selectedTrek || "Kalsubai Trek") +
-                    " submitted successfully!";
-
-
-                /* CONSOLE */
-
-                console.log({
-
-                    name: name,
-
-                    email: email,
-
-                    phone: phone,
-
-                    trek:
-                        selectedTrek ||
-                        "Kalsubai Trek",
-
-                    trekDate: trekDate,
-
-                    people: people,
-
-                    totalAmount: total
-
-                });
-
-            }
-        );
-
-
-    </script>
+<script type="module">
+import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { TREKS } from "./js/treks.js";
+
+/* =========================================
+   FIREBASE CONFIG  (paste your real values)
+========================================= */
+const firebaseConfig = {
+    apiKey: "AIzaSyAhmGdEIv1PxYXr63KYPN41J_wW7wwVNR0",
+    authDomain: "trekexplorer-a2fdf.firebaseapp.com",
+    projectId: "trekexplorer-a2fdf",
+    storageBucket: "trekexplorer-a2fdf.firebasestorage.app",
+    messagingSenderId: "46252297439",
+    appId: "1:46252297439:web:4c93a5ce3f7b0e5fac2d6a"
+};
+
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+/* =========================================
+   GET TREK DATA FROM LOCAL STORAGE
+========================================= */
+const trekId = localStorage.getItem("trekId");
+const trekObj = trekId ? TREKS[trekId] : null;
+const selectedTrek = localStorage.getItem("selectedTrek") || trekObj?.name || "Kalsubai Trek";
+const trekPrice = Number(localStorage.getItem("trekPrice")) || trekObj?.price || 999;
+const trekImage = localStorage.getItem("trekImage") || trekObj?.image || "img/kalsubai.jpeg";
+const trekLocation = localStorage.getItem("trekLocation") || trekObj?.location || "Ahmednagar, Maharashtra";
+const trekDifficulty = localStorage.getItem("trekDifficulty") || trekObj?.difficulty || "Moderate";
+const trekDistance = localStorage.getItem("trekDistance") || trekObj?.distance || "Approx. 6.5 KM";
+const trekDuration = localStorage.getItem("trekDuration") || trekObj?.duration || "5–6 Hours";
+const trekHeight = localStorage.getItem("trekHeight") || trekObj?.height || "5,400 ft";
+const trekStartingPoint = localStorage.getItem("trekStartingPoint") || trekObj?.start || "Bari Village";
+const trekRoutePreference = localStorage.getItem("trekRoutePreference") || "Standard Trekking Route";
+
+/* =========================================
+   DISPLAY TREK INFORMATION
+========================================= */
+const setText = (id, value) => { document.getElementById(id).textContent = value; };
+
+setText("trekName", selectedTrek);
+setText("bookingTrekName", selectedTrek);
+setText("trekLocation", trekLocation);
+setText("trekDifficulty", trekDifficulty);
+setText("trekDistance", trekDistance);
+setText("trekDuration", trekDuration);
+setText("trekHeight", trekHeight);
+setText("trekStartingPoint", trekStartingPoint);
+setText("trekRoutePreference", trekRoutePreference);
+setText("trekPrice", "₹" + trekPrice.toLocaleString("en-IN"));
+
+const imgEl = document.getElementById("trekImage");
+imgEl.src = trekImage;
+imgEl.alt = selectedTrek;
+
+document.title = selectedTrek + " | TrekExplorer";
+
+/* =========================================
+   MINIMUM TREK DATE
+========================================= */
+const today = new Date().toISOString().split("T")[0];
+document.getElementById("trekDate").setAttribute("min", today);
+
+/* =========================================
+   TOTAL PRICE
+========================================= */
+const peopleSelect = document.getElementById("people");
+const totalAmountEl = document.getElementById("totalAmount");
+const breakdownEl = document.getElementById("priceBreakdown");
+
+peopleSelect.addEventListener("change", function () {
+    const count = Number(this.value) || 0;
+    const total = count * trekPrice;
+    totalAmountEl.textContent = "₹" + total.toLocaleString("en-IN");
+    breakdownEl.textContent = count
+        ? `₹${trekPrice.toLocaleString("en-IN")} × ${count} ${count === 1 ? "person" : "people"}`
+        : "Select number of travellers";
+});
+
+/* =========================================
+   LOGIN CHECK
+========================================= */
+let currentUser = null;
+onAuthStateChanged(auth, (user) => { currentUser = user; });
+
+/* =========================================
+   BOOKING FORM -> FIRESTORE
+========================================= */
+const form = document.getElementById("bookingForm");
+const message = document.getElementById("bookingMessage");
+
+function showMessage(text, color) {
+    message.textContent = text;
+    message.style.color = color;
+}
+
+form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    if (!currentUser) {
+        showMessage("🔒 Please log in to book a trek. Redirecting...", "red");
+        setTimeout(() => { window.location.href = "login.html"; }, 1500);
+        return;
+    }
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const trekDate = document.getElementById("trekDate").value;
+    const people = Number(peopleSelect.value);
+
+    if (!/^\d{10}$/.test(phone)) {
+        showMessage("❌ Please enter a valid 10-digit phone number.", "red");
+        return;
+    }
+
+    if (!people) {
+        showMessage("❌ Please select the number of people.", "red");
+        return;
+    }
+
+    const button = form.querySelector("button[type='submit']");
+    button.disabled = true;
+    showMessage("Saving your booking...", "#555");
+
+    try {
+        const pickupHub = document.getElementById("pickupHub").value;
+        const docRef = await addDoc(collection(db, "bookings"), {
+            userId: currentUser.uid,
+            trekName: selectedTrek,
+            routePreference: trekRoutePreference,
+            pickupHub: pickupHub,
+            fullName: name,
+            email: email,
+            phone: phone,
+            trekDate: trekDate,
+            people: people,
+            pricePerPerson: trekPrice,
+            totalAmount: people * trekPrice,
+            status: "pending",
+            createdAt: serverTimestamp()
+        });
+
+        showMessage("✅ Booking for " + selectedTrek + " submitted! ID: " + docRef.id, "#2E8B57");
+        form.reset();
+        totalAmountEl.textContent = "₹0";
+        breakdownEl.textContent = "Select number of travellers";
+    } catch (error) {
+        console.error(error);
+        showMessage("❌ Booking failed: " + (error.code || error.message), "red");
+    } finally {
+        button.disabled = false;
+    }
+});
+</script>
+<script type="module" src="js/navbar-auth.js"></script>
 
 
 </body>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Bookings | TrekExplorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+
+  .page { width: 90%; max-width: 960px; margin: 50px auto 80px; }
+  .page h1 { font-family: 'Outfit', sans-serif; color: #0f172a; font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .page .sub { color: #64748b; font-size: 16px; margin-bottom: 34px; }
+
+  .booking-card { background: #ffffff; border-radius: 20px; padding: 30px; margin-bottom: 28px;
+                  border: 1px solid #e2e8f0; box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+                  transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .booking-card:hover { box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.1); }
+  .bc-top { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+  .bc-top h2 { font-family: 'Outfit', sans-serif; color: #0f172a; font-size: 24px; font-weight: 700; }
+  .badge { padding: 6px 14px; border-radius: 9999px; font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge.pending { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+  .badge.progress { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+  .badge.done { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+  .badge.cancelled { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+
+  .details { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px;
+             margin: 0 0 26px; }
+  .details div { background: #f8fafc; padding: 12px 16px; border-radius: 12px; border: 1px solid #f1f5f9; }
+  .details div small { display: block; color: #64748b; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.4px; }
+  .details div strong { font-size: 16px; font-weight: 700; color: #0f172a; }
+
+  /* progress tracker */
+  .tracker { display: flex; margin: 16px 0 24px; position: relative; }
+  .step { flex: 1; text-align: center; position: relative; }
+  .step .dot { width: 42px; height: 42px; margin: 0 auto 10px; border-radius: 50%; background: #f1f5f9;
+               border: 2px solid #e2e8f0; display: flex; align-items: center; justify-content: center;
+               font-size: 18px; position: relative; z-index: 2; transition: all 0.3s ease; }
+  .step::before { content: ""; position: absolute; top: 21px; left: -50%; width: 100%; height: 4px;
+                  background: #e2e8f0; z-index: 1; transition: background 0.3s ease; }
+  .step:first-child::before { display: none; }
+  .step.done .dot { background: #15803d; border-color: #15803d; color: #ffffff; box-shadow: 0 4px 10px rgba(21, 128, 61, 0.3); }
+  .step.done::before { background: #15803d; }
+  .step.current .dot { border-color: #16a34a; box-shadow: 0 0 0 5px rgba(22, 163, 74, 0.2); }
+  .step span { font-size: 13px; color: #64748b; font-weight: 600; display: block; padding: 0 4px; }
+  .step.done span { color: #15803d; font-weight: 700; }
+
+  .status-msg { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 16px 20px; font-size: 15px; color: #166534; font-weight: 500; }
+  .bus-info { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px 16px; font-size: 14px; }
+  .bus-info span { background: #ffffff; border: 1px solid #bbf7d0; padding: 6px 14px; border-radius: 9999px; color: #15803d; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+  .cancel-note { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; border-radius: 12px; padding: 16px 20px; font-weight: 500; }
+
+  .empty { text-align: center; background: #ffffff; border-radius: 20px; padding: 60px 24px;
+           border: 1px solid #e2e8f0; box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06); font-size: 16px; color: #64748b; }
+  .empty a { display: inline-block; margin-top: 18px; background: linear-gradient(135deg, #15803d, #16a34a); color: #ffffff;
+             text-decoration: none; padding: 12px 28px; border-radius: 12px; font-weight: 700; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); }
+  .empty a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(22, 163, 74, 0.4); }
+
+  @media (max-width: 600px) {
+    .step span { font-size: 11px; }
+    .step .dot { width: 34px; height: 34px; font-size: 15px; }
+    .step::before { top: 17px; }
+    .booking-card { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<main class="page">
+  <h1>🎟️ My Bookings</h1>
+  <p class="sub">Track your trek and see when the bus reaches your pickup point.</p>
+  <div id="bookingsList"><div class="empty">Loading your bookings...</div></div>
+</main>
+
+<script type="module">
+import { auth, db } from "./js/firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { collection, query, where, onSnapshot }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const list = document.getElementById("bookingsList");
+
+// The steps shown in the tracker, in order
+const STEPS = [
+  { key: "pending",        label: "Booking Received",  icon: "📝" },
+  { key: "confirmed",      label: "Confirmed",         icon: "✅" },
+  { key: "bus_assigned",   label: "Bus Assigned",      icon: "🚌" },
+  { key: "bus_on_the_way", label: "Bus On The Way",    icon: "📍" },
+  { key: "reached",        label: "Bus Reached Pickup",icon: "🎉" },
+];
+
+const MESSAGES = {
+  pending:        "We received your booking. Our team will confirm it shortly.",
+  confirmed:      "Your booking is confirmed. Bus details will be shared soon.",
+  bus_assigned:   "A bus has been assigned to your trek. Be ready at the pickup point on time.",
+  bus_on_the_way: "🚌 The bus is on the way to your pickup point. Please be ready!",
+  reached:        "🎉 The bus has reached your pickup point. Happy trekking!",
+  completed:      "Trek completed. Hope you had a great adventure!",
+};
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
+  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+const fmtDate = (d) => {
+  if (!d) return "-";
+  const dt = new Date(d + "T00:00:00");
+  return isNaN(dt) ? esc(d) : dt.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+};
+
+function badgeFor(status) {
+  if (status === "cancelled") return ["cancelled", "Cancelled"];
+  if (status === "completed" || status === "reached") return ["done", status === "completed" ? "Completed" : "Bus Reached"];
+  if (status === "pending") return ["pending", "Pending"];
+  return ["progress", "In Progress"];
+}
+
+function renderBooking(b) {
+  const status = b.status || "pending";
+  const [badgeClass, badgeText] = badgeFor(status);
+  const activeKey = status === "completed" ? "reached" : status;
+  const activeIndex = STEPS.findIndex((s) => s.key === activeKey);
+
+  const tracker = status === "cancelled"
+    ? `<div class="cancel-note">This booking was cancelled. Contact us if you think this is a mistake.</div>`
+    : `<div class="tracker">
+        ${STEPS.map((s, i) => `
+          <div class="step ${i <= activeIndex ? "done" : ""} ${i === activeIndex ? "current" : ""}">
+            <div class="dot">${s.icon}</div><span>${s.label}</span>
+          </div>`).join("")}
+       </div>
+       <div class="status-msg">${esc(MESSAGES[status] || MESSAGES.pending)}</div>
+       ${(b.busNumber || b.pickupPoint || b.pickupTime) ? `
+         <div class="bus-info">
+           ${b.busNumber ? `<span>🚌 Bus: <strong>${esc(b.busNumber)}</strong></span>` : ""}
+           ${b.pickupPoint ? `<span>📍 Pickup: <strong>${esc(b.pickupPoint)}</strong></span>` : ""}
+           ${b.pickupTime ? `<span>⏰ Time: <strong>${esc(b.pickupTime)}</strong></span>` : ""}
+         </div>` : ""}`;
+
+  return `
+    <div class="booking-card">
+      <div class="bc-top">
+        <h2>${esc(b.trekName)}</h2>
+        <span class="badge ${badgeClass}">${badgeText}</span>
+      </div>
+      <div class="details">
+        <div><small>Trek date</small><strong>${fmtDate(b.trekDate)}</strong></div>
+        <div><small>People</small><strong>${esc(b.people)}</strong></div>
+        <div><small>Total amount</small><strong>₹${Number(b.totalAmount || 0).toLocaleString("en-IN")}</strong></div>
+        <div><small>Booking ID</small><strong>${esc(b.id.slice(0, 8))}</strong></div>
+        ${b.routePreference ? `<div><small>Route Option</small><strong>${esc(b.routePreference)}</strong></div>` : ""}
+        ${b.pickupHub ? `<div><small>Boarding Hub</small><strong>${esc(b.pickupHub)}</strong></div>` : ""}
+      </div>
+      ${tracker}
+    </div>`;
+}
+
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    list.innerHTML = `<div class="empty">🔒 Please log in to see your bookings.<br><a href="login.html">Login</a></div>`;
+    return;
+  }
+
+  const q = query(collection(db, "bookings"), where("userId", "==", user.uid));
+
+  // onSnapshot keeps the page live: when the admin changes the status, it updates by itself
+  onSnapshot(q, (snap) => {
+    const bookings = snap.docs.map((d) => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+
+    list.innerHTML = bookings.length
+      ? bookings.map(renderBooking).join("")
+      : `<div class="empty">You haven't booked any trek yet.<br><a href="index.html#treks">Explore Treks</a></div>`;
+  }, (err) => {
+    console.error(err);
+    list.innerHTML = `<div class="empty">Could not load bookings (${esc(err.code || err.message)}).</div>`;
+  });
+});
+</script>
+<script type="module" src="js/navbar-auth.js"></script>
+</body>
+</html>
