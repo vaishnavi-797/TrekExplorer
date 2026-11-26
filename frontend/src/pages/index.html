@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
@@ -374,7 +374,7 @@
 
 <!-- Dynamic Trek Catalog & Smart Filter Script -->
 <script type="module">
-import { TREK_CATEGORIES, TREKS } from "./js/treks.js";
+import { TREK_CATEGORIES, TREKS } from "../services/treks.js";
 
 const allTreks = Object.values(TREKS);
 const state = {
@@ -482,7 +482,7 @@ function renderCard(trek) {
                     src="${esc(trek.image)}"
                     alt="${esc(trek.name)}"
                     loading="lazy"
-                    onerror="this.onerror=null;this.src='img/kaluwaterfall.png';"
+                    onerror="this.onerror=null;this.src='../assets/img/kaluwaterfall.png';"
                 >
                 <span class="card-tag">${esc(trek.tag)}</span>
                 <span class="card-difficulty ${tierClass}">${esc(trek.difficulty)}</span>
@@ -714,14 +714,15 @@ scrollTopBtn.addEventListener("click", () => {
 </script>
 
 <!-- Profile icon after login & dynamic navbar -->
-<script type="module" src="js/navbar-auth.js"></script>
+<script type="module" src="../components/navbar-auth.js"></script>
 
 <!-- Contact form submission -->
 <script type="module">
-import { db } from "./js/firebase.js";
+import { db } from "../services/firebase.js";
 import { collection, addDoc, serverTimestamp }
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+const CONTACT_API_URL = "http://localhost:8080/api/contact";
 const form = document.getElementById("contactForm");
 const status = document.getElementById("formStatus");
 
@@ -733,13 +734,31 @@ form.addEventListener("submit", async (event) => {
     status.textContent = "Sending...";
     status.style.color = "#555";
 
+    const payload = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        message: document.getElementById("message").value.trim()
+    };
+
     try {
-        await addDoc(collection(db, "contactMessages"), {
-            name: document.getElementById("name").value.trim(),
-            email: document.getElementById("email").value.trim(),
-            message: document.getElementById("message").value.trim(),
-            createdAt: serverTimestamp()
-        });
+        const results = await Promise.allSettled([
+            addDoc(collection(db, "contactMessages"), {
+                ...payload,
+                createdAt: serverTimestamp()
+            }),
+            fetch(CONTACT_API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }).then((res) => {
+                if (!res.ok) throw new Error("Backend returned " + res.status);
+                return res.json();
+            })
+        ]);
+
+        if (!results.some((r) => r.status === "fulfilled")) {
+            throw new Error("All submission channels failed");
+        }
 
         status.textContent = "Thank you! Your message has been sent.";
         status.style.color = "green";

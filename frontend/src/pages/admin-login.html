@@ -13,7 +13,7 @@
     font-family: Arial, Helvetica, sans-serif;
     background:
       linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-      url("img/kaluwaterfall.png") center / cover,
+      url("../assets/img/kaluwaterfall.png") center / cover,
       #1f3d2b;
   }
 
@@ -79,7 +79,7 @@
 </div>
 
 <script type="module">
-import { adminAuth as auth } from "./js/firebase.js";
+import { adminAuth as auth } from "../services/firebase.js";
 import { signInWithEmailAndPassword, onAuthStateChanged }
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 

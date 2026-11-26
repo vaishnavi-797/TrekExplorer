@@ -113,7 +113,7 @@
                     rgba(0, 0, 0, 0.55),
                     rgba(0, 0, 0, 0.55)
                 ),
-                url("img/kaluwaterfall.png");
+                url("../assets/img/kaluwaterfall.png");
 
             background-size: cover;
             background-position: center;
@@ -589,7 +589,7 @@
 
             <img
                 id="trekImage"
-                src="img/kalsubai.jpeg"
+                src="../assets/img/kalsubai.jpeg"
                 alt="Trek Image"
             >
 
@@ -977,27 +977,11 @@
          JAVASCRIPT
          ========================================= -->
 <script type="module">
-import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, serverTimestamp }
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { collection, addDoc, serverTimestamp }
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import { TREKS } from "./js/treks.js";
-
-/* =========================================
-   FIREBASE CONFIG  (paste your real values)
-========================================= */
-const firebaseConfig = {
-    apiKey: "AIzaSyAhmGdEIv1PxYXr63KYPN41J_wW7wwVNR0",
-    authDomain: "trekexplorer-a2fdf.firebaseapp.com",
-    projectId: "trekexplorer-a2fdf",
-    storageBucket: "trekexplorer-a2fdf.firebasestorage.app",
-    messagingSenderId: "46252297439",
-    appId: "1:46252297439:web:4c93a5ce3f7b0e5fac2d6a"
-};
-
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+import { auth, db } from "../services/firebase.js";
+import { TREKS } from "../services/treks.js";
 
 /* =========================================
    GET TREK DATA FROM LOCAL STORAGE
@@ -1006,7 +990,8 @@ const trekId = localStorage.getItem("trekId");
 const trekObj = trekId ? TREKS[trekId] : null;
 const selectedTrek = localStorage.getItem("selectedTrek") || trekObj?.name || "Kalsubai Trek";
 const trekPrice = Number(localStorage.getItem("trekPrice")) || trekObj?.price || 999;
-const trekImage = localStorage.getItem("trekImage") || trekObj?.image || "img/kalsubai.jpeg";
+const rawTrekImage = localStorage.getItem("trekImage") || trekObj?.image || "../assets/img/kalsubai.jpeg";
+const trekImage = rawTrekImage.startsWith("img/") ? `../assets/${rawTrekImage}` : rawTrekImage;
 const trekLocation = localStorage.getItem("trekLocation") || trekObj?.location || "Ahmednagar, Maharashtra";
 const trekDifficulty = localStorage.getItem("trekDifficulty") || trekObj?.difficulty || "Moderate";
 const trekDistance = localStorage.getItem("trekDistance") || trekObj?.distance || "Approx. 6.5 KM";
@@ -1135,7 +1120,7 @@ form.addEventListener("submit", async function (event) {
     }
 });
 </script>
-<script type="module" src="js/navbar-auth.js"></script>
+<script type="module" src="../components/navbar-auth.js"></script>
 
 
 </body>

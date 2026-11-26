@@ -53,7 +53,7 @@
     padding: 46px 60px 100px; color: #fff;
     background:
       linear-gradient(rgba(20, 50, 33, .78), rgba(20, 50, 33, .78)),
-      url("img/kaluwaterfall.png") center / cover,
+      url("../assets/img/kaluwaterfall.png") center / cover,
       var(--green-deep);
   }
   .banner-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;
@@ -450,7 +450,7 @@
      BOOKINGS (Firebase): status + bus details
      ========================================= -->
 <script type="module">
-import { adminAuth as auth, adminDb as db } from "./js/firebase.js";
+import { adminAuth as auth, adminDb as db } from "../services/firebase.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { collection, onSnapshot, doc, updateDoc, serverTimestamp }
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";

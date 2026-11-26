@@ -1,0 +1,11 @@
+{
+  "name": "trekexplorer-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TrekExplorer pan-India trekking portal frontend",
+  "scripts": {
+    "dev": "node -e \"const http=require('http'),fs=require('fs'),path=require('path');const root=process.cwd(),port=process.env.PORT||3000;const mime={'.html':'text/html;charset=utf-8','.css':'text/css;charset=utf-8','.js':'application/javascript;charset=utf-8','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.avif':'image/avif','.svg':'image/svg+xml'};http.createServer((req,res)=>{const urlPath=decodeURIComponent((req.url||'/').split('?')[0]);if(urlPath==='/'){res.writeHead(302,{Location:'/src/pages/index.html'});return res.end();}const safePath=path.normalize(urlPath).replace(/^(\\.\\.(\\/|\\\\|$))+/,'');const filePath=path.join(root,safePath);if(!filePath.startsWith(root)||!fs.existsSync(filePath)||fs.statSync(filePath).isDirectory()){res.writeHead(404);return res.end('Not found');}res.writeHead(200,{'Content-Type':mime[path.extname(filePath).toLowerCase()]||'application/octet-stream'});fs.createReadStream(filePath).pipe(res);}).listen(port,()=>console.log('TrekExplorer frontend running at http://localhost:'+port+'/src/pages/index.html'));\"",
+    "start": "npm run dev",
+    "build": "node -e \"const fs=require('fs'),path=require('path');fs.rmSync('dist',{recursive:true,force:true});fs.cpSync('src',path.join('dist','src'),{recursive:true});fs.writeFileSync(path.join('dist','index.html'),'<!DOCTYPE html><meta charset=\\\"utf-8\\\"><meta http-equiv=\\\"refresh\\\" content=\\\"0; url=src/pages/index.html\\\">');console.log('Built static bundle into dist/');\""
+  }
+}

@@ -594,7 +594,7 @@
     </footer>
 
     <script type="module">
-        import { TREKS } from "./js/treks.js";
+        import { TREKS } from "../services/treks.js";
 
         const urlParams = new URLSearchParams(window.location.search);
         const trekId = urlParams.get("trek") || localStorage.getItem("trekId");
@@ -689,6 +689,6 @@
             `;
         }
     </script>
-    <script type="module" src="js/navbar-auth.js"></script>
+    <script type="module" src="../components/navbar-auth.js"></script>
 </body>
 </html>
