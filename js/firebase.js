@@ -17,3 +17,11 @@ const firebaseConfig = {
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+// Separate app so an admin login does not sign the public website in.
+const ADMIN_APP = "trekexplorer-admin";
+const adminApp = getApps().some((a) => a.name === ADMIN_APP)
+  ? getApp(ADMIN_APP)
+  : initializeApp(firebaseConfig, ADMIN_APP);
+export const adminAuth = getAuth(adminApp);
+export const adminDb = getFirestore(adminApp);

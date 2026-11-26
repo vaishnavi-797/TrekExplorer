@@ -450,7 +450,7 @@
      BOOKINGS (Firebase): status + bus details
      ========================================= -->
 <script type="module">
-import { auth, db } from "./js/firebase.js";
+import { adminAuth as auth, adminDb as db } from "./js/firebase.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { collection, onSnapshot, doc, updateDoc, serverTimestamp }
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";

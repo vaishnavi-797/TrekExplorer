@@ -183,9 +183,19 @@ if (authButtons) {
     const reveal = () => (authButtons.style.visibility = "visible");
     setTimeout(reveal, 2500);
 
+    const ADMIN_EMAIL = "admin@trekexplorer.com";
+    const ADMIN_UID = "OYDXW9g1R3M3hS9ietRbRQXjRp63";
+    const isAdminUser = (user) =>
+        !!user && (user.uid === ADMIN_UID || (user.email || "").toLowerCase() === ADMIN_EMAIL);
+
     onAuthStateChanged(auth, (user) => {
         console.log("[navbar-auth] auth state:", user ? user.email : "signed out");
         try {
+            // Admin stays on the admin panel. Clear any leftover admin session here.
+            if (isAdminUser(user)) {
+                signOut(auth);
+                return;
+            }
             if (user) showProfile(user);
         } finally {
             reveal();
